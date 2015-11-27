@@ -1,0 +1,18 @@
+{
+  "name": "PhotoApp",
+  "description": "Django Powered Photo Editing Application",
+  "version": "1.0.0",
+  "main": "manage.py",
+  "license": "GNU",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:andela-ooshodi/django-photo-application.git"
+  }
+}
