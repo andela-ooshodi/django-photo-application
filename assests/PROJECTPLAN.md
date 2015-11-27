@@ -29,5 +29,9 @@ myPhotoApp is an image editing app allowing you to add different effects to your
 
 | Task Name |  Points |
 | --------- | ------- |
-| Draft a project plan    | 1       |
-| Create the application models    | 2      |
+| Draft a project plan    | 1 |
+| Facebook Authentication | 2 |
+| Create the application models | 2 |
+| Create templates for the project | 2 |
+| Implement logic to upload images | 2 |
+| Implement logic to apply effects to images | 3 |
