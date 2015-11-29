@@ -1,10 +1,18 @@
 {% extends "photoapp/base.html" %}
-{% load bootstrap %}
 
 {% block title %}myPhotoApp{% endblock %}
 
 {% block body %}
+<a href="/logout">Logout</a>
+{% if messages %}
+    {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}" role="alert" id="flash-message">
+            {{ message }}
+        </div>
+    {% endfor %}    
+{% endif %}
 <h1> Facebook Worked!!!</h1>
 <h5>Welcome {{ request.user.username }}</h5>
+<img src="{{ profilepic.photo }}"/>
 
 {% endblock body %}

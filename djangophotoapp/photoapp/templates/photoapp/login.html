@@ -1,10 +1,9 @@
 {% extends "photoapp/base.html" %}
-{% load bootstrap %}
 
 {% block title %}myPhotoApp{% endblock %}
 
 {% block body %}
 <h1>This is the Login page</h1>
-<a href="/login/facebook/">Login with Facebook</a>
+<a href="{% url 'social:begin' 'facebook' %}">Login with Facebook</a>
 
 {% endblock body %}
