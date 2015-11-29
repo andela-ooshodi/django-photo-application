@@ -57,3 +57,6 @@ target/
 
 # Development settings
 djangophotoapp/djangophotoapp/settings/development.py
+
+# Environment Variables
+.env.yml

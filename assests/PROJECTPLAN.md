@@ -23,6 +23,7 @@ myPhotoApp is an image editing app allowing you to add different effects to your
 - Language: Python
 - Framework: Django
 - Database: postgreSQL
+- Social Authentication: python social auth
 
 
 ### Tasks and Deliverables
