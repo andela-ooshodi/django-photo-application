@@ -1,11 +1,24 @@
-from django.shortcuts import render
+from django.shortcuts import redirect
 from django.views.generic import TemplateView
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
+from django.contrib import messages
+from django.template import RequestContext
+from photoapp.models import UserProfile
 
 
 class LoginView(TemplateView):
     template_name = 'photoapp/login.html'
+
+    def dispatch(self, request, *args, **kwargs):
+        if request.user.is_authenticated():
+            messages.add_message(
+                request, messages.SUCCESS, 'Welcome back!')
+            return redirect(
+                '/',
+                context_instance=RequestContext(request)
+            )
+        return super(LoginView, self).dispatch(request, *args, **kwargs)
 
 
 class LoginRequiredMixin(object):
@@ -19,3 +32,9 @@ class LoginRequiredMixin(object):
 
 class HomeView(LoginRequiredMixin, TemplateView):
     template_name = 'photoapp/home.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(HomeView, self).get_context_data(**kwargs)
+        context['profilepic'] = UserProfile.objects.get(
+            user_id=self.request.user.id)
+        return context
