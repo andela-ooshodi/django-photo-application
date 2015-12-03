@@ -1,0 +1,22 @@
+body {
+    background: #e9eaed;
+    background-size: cover;
+    height: 100%;
+}
+
+/* Login page styling */
+#facebook-button {
+    background-color: #3B5998;
+    height: 100%;
+}
+
+.index-body {
+    background-color: #fff;
+    width: 100%;
+    min-height: 100%;
+    padding: 50px;
+    margin-top: 15%;
+    text-align: center;
+}
+
+/* end of styling */

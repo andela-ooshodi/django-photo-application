@@ -138,7 +138,7 @@ SOCIAL_AUTH_LOGIN_URL = '/login'
 SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
 
 SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
-    'fields': 'id,name,email', 
+    'fields': 'id,name,email',
 }
 
 SOCIAL_AUTH_PIPELINE = (
