@@ -2,6 +2,7 @@ body {
     background: #e9eaed;
     background-size: cover;
     height: 100%;
+    color: #361414;
 }
 
 /* Login page styling */
@@ -15,8 +16,25 @@ body {
     width: 100%;
     min-height: 100%;
     padding: 50px;
-    margin-top: 15%;
+    margin-top: 7%;
     text-align: center;
+}
+
+#logo {
+    font-size: 200px;
+    color: #ff471a;
+    opacity: 0.9;
+}
+
+#title {
+    font-weight: 400;
+    letter-spacing: 1.5px;
+    margin-bottom: 25px;
+}
+
+#description {
+    margin-bottom: 35px;
+    font-weight: 200;
 }
 
 /* end of styling */
