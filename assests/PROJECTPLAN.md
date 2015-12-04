@@ -27,6 +27,8 @@ myPhotoApp is an image editing app allowing you to add different effects to your
 - Image database: Cloudinary
 - Background task-runner: Celery
 - Broker: RabbitMQ
+- Frontend framework: Materialize
+- Frontend dependencies manager: Bower
 
 
 ### Tasks and Deliverables
