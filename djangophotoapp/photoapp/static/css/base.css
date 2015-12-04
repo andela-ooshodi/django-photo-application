@@ -78,20 +78,42 @@ nav ul li {
 
 .sidebar {
     position: absolute;
-    z-index: -1;
     left: 0;
     bottom: 0;
-    top: 0;
-    min-height: 100%;
+    top: 65px;
     background-color: #fff;
-    padding: 65px 20px 20px;   
+    padding: 20px;   
 }
 
 .content {
-    background-color: #fff;
+   margin-top: 2%;
+}
+
+#edit {
+    margin-right: 10px;
 }
 
 #upload-button {
-    background-color: #476cb8;
+    background-color: #1992BF;
     width: 100%;
+}
+
+#upload-button-lg {
+    background-color: #1992BF;   
+}
+
+.top .btn {
+    background-color: #fff;
+    color: #000;
+
+}
+
+.middle {
+    background-color: #fff;
+    min-height: 100%
+}
+
+.bottom {
+    background-color: #fff;
+    min-height: 100%;
 }
