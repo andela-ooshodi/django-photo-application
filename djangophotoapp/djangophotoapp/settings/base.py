@@ -11,8 +11,13 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 """
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+from __future__ import absolute_import
 import os
 import cloudinary
+
+# This will make sure the app is always imported when
+# Django starts so that shared_task will use this app.
+from .celery import app as celery_app
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -40,7 +45,8 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'photoapp',
     'social.apps.django_app.default',
-    'cloudinary'
+    'cloudinary',
+    'djcelery'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -163,3 +169,11 @@ cloudinary.config(
     api_key=os.getenv('API_KEY'),
     api_secret=os.getenv('API_SECRET')
 )
+
+# Celery Configuration
+# The backend used to store task results using RabbitMQ as a broker
+# This sends results back as AMQP messages
+CELERY_RESULT_BACKEND = 'amqp'
+
+# Celery Test Runner for unit tests
+TEST_RUNNER = 'djcelery.contrib.test_runner.CeleryTestSuiteRunner'
