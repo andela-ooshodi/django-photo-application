@@ -1,4 +1,5 @@
 {% extends "photoapp/base.html" %}
+{% load cloudinary %} 
 
 {% block title %}myPhotoApp{% endblock %}
 
@@ -32,7 +33,30 @@
 <!-- Page Layout -->
 <!-- Sidebar -->
 <div class="sidebar hide-on-med-and-down">
-    <a href="#" id="upload-button" class="waves-effect waves-light btn card-panel hoverable"><i class="mdi mdi-upload left"></i>Upload Image</a>
+    <form role="form" action="/home" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="file-field input-field file-input-form">
+            <div class="file-path-wrapper file-input-text">
+                <input class="file-path validate" type="text" placeholder="Click here to attach your image">
+              </div>
+              <div class="file-input">
+                <input name="image" type="file">
+              </div>      
+        </div>
+        <button type="submit" id="upload-button" class="waves-effect waves-light btn card-panel hoverable"><i class="mdi mdi-upload left"></i>Upload Image</button>
+        </div>
+    </form>
+    <div class="section">
+    {% for image in images %}
+    <img class="responsive-img" src="http://res.cloudinary.com/myphotoapp/c_fill,h_100,w_100/{{ image.image }}"/>
+    </div>
+    <div class="divider"></div>
+    {% empty %}
+    <div class="section">
+    <div class="card-panel">Your uploaded images will appear here</div>
+    </div>
+    <div class="divider"></div>
+    {% endfor %}    
 </div>
 <!-- Page content -->
 <div class="container">

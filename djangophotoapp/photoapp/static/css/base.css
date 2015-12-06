@@ -82,7 +82,8 @@ nav ul li {
     bottom: 0;
     top: 65px;
     background-color: #fff;
-    padding: 20px;   
+    padding: 20px;  
+    overflow-y: auto; 
 }
 
 .content {
@@ -116,4 +117,26 @@ nav ul li {
 .bottom {
     background-color: #fff;
     min-height: 100%;
+}
+
+.file-input-form {
+    position: relative;
+}
+
+.file-input-text {
+    position: relative;
+}
+
+.file-field .file-path-wrapper {
+    padding-left: 0px;
+}
+
+.file-input {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+
 }

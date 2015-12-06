@@ -8,7 +8,9 @@ class UserProfile(models.Model):
     photo = models.TextField()
 
 
-class Pictures(models.Model):
+class Images(models.Model):
     owner = models.ForeignKey(User)
-    picture = CloudinaryField('picture')
-    picture_file_name = models.CharField(max_length=100, null=True)
+    image = CloudinaryField('image')
+    image_file_name = models.CharField(max_length=100, null=True)
+    date_created = models.DateTimeField(
+        auto_now_add=True, verbose_name='created')

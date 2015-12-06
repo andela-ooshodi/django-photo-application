@@ -1,15 +1,15 @@
 from django.forms import ModelForm
-from .models import Pictures
+from .models import Images
 from cloudinary.forms import CloudinaryFileField
 
 
-class PicturesForm(ModelForm):
+class ImageForm(ModelForm):
 
     class Meta:
-        model = Pictures
-        fields = ['picture']
+        model = Images
+        fields = ['image']
 
-    picture = CloudinaryFileField(
+    image = CloudinaryFileField(
         options={
             'use_filename': True
         })
