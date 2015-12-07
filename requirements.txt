@@ -1,13 +1,11 @@
 amqp==1.4.7
 anyjson==0.3.3
 billiard==3.3.0.21
-celery==3.1.19
 cloudinary==1.2.0
 coverage==4.0.2
 dj-database-url==0.3.0
 Django==1.8
 django-bootstrap-form==3.2
-django-celery==3.1.17
 django-envie==0.0.9
 django-filter==0.11.0
 django-postgrespool==0.3.0
