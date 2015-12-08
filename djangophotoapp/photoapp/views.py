@@ -1,4 +1,5 @@
 from django.shortcuts import redirect
+from django.http import HttpResponse
 from django.views.generic import TemplateView
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
@@ -6,6 +7,8 @@ from django.contrib import messages
 from django.template import RequestContext
 from photoapp.models import UserProfile, Images
 from photoapp.forms import ImageForm
+
+import json
 
 
 class LoginView(TemplateView):
@@ -51,5 +54,8 @@ class HomeView(LoginRequiredMixin, TemplateView):
         image.image_file_name = form.files['image'].name
         image.owner = request.user
         image.save()
-        return redirect('/home')
-        # return render(request, 'photoapp/home.html')
+
+        return HttpResponse(
+            json.dumps({'msg': 'success'}),
+            content_type="application/json"
+        )
