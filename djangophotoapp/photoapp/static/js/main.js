@@ -7,12 +7,12 @@ $(document).ready(function () {
         event.preventDefault();
         var fd = new FormData();
         var url = $(this).attr("action");
-        var image = $(this).find('input[type="file"]')[0].files[0];
+        var image = $(this).find("input[type='file']")[0].files[0];
         fd.append("image", image);
-        // var other_data = $(this).serializeArray();
-        // $.each(other_data, function(key, input) {
-        //     fd.append(input.name, input.value);
-        // });
+        var other_data = $(this).serializeArray();
+        $.each(other_data, function(key, input) {
+            fd.append(input.name, input.value);
+        });
         upload_image(fd, url);
     });
     // AJAX for uploading image
@@ -21,6 +21,8 @@ $(document).ready(function () {
             url: url,
             type: "POST",
             data: fd,
+            contentType:false,
+            processData: false,
 
             // On success
             success: function(json) {
