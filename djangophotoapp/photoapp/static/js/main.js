@@ -1,10 +1,9 @@
-$(document).ready(function () {
+$(document).ready(function() {
     $("#flash-message").fadeOut(3000);
     // Triggers sidebar on mobile view
     $(".button-collapse").sideNav();
     // Triggers modal
     $('.modal-trigger').leanModal();
-
     // Upload Image on submit
     $("#upload-form").on("submit", function(event) {
         event.preventDefault();
@@ -20,16 +19,16 @@ $(document).ready(function () {
             url: url,
             type: "POST",
             data: fd,
-            contentType:false,
+            contentType: false,
             processData: false,
-
             // On success
             success: function(json) {
-                $(".uploaded-images").load(document.URL + " .uploaded-images");
-                },
+                $(".uploaded-images").load(document.URL + " .uploaded-images", function() {
+                    $('.modal-trigger').leanModal();
+                });
+            },
         });
     };
-
     // Delete Image
     $('body').on('click', '.delete-image', function() {
         var image_id = $(this).attr('id').split('-')[1];
@@ -45,8 +44,9 @@ $(document).ready(function () {
                 image_id: image_id
             },
             success: function(json) {
-                $("#section-" + json).hide();
-                $("#divider-" + json).hide();
+                $(".uploaded-images").load(document.URL + " .uploaded-images", function() {
+                    $('.modal-trigger').leanModal();
+                });
             },
         });
     };

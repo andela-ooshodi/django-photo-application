@@ -7,6 +7,7 @@ from django.contrib import messages
 from django.template import RequestContext
 from photoapp.models import UserProfile, Images
 from photoapp.forms import ImageForm
+from cloudinary import api
 
 import json
 
@@ -62,8 +63,16 @@ class HomeView(LoginRequiredMixin, TemplateView):
 
     def delete(self, request, **kwargs):
         image_id = int(request.body.split('=')[1])
+        image = Images.objects.get(pk=image_id)
+        public_id = image.image.public_id
+
+        # delete from cloudinary
+        api.delete_resources([public_id])
+
+        # delete from database
+        image.delete()
 
         return HttpResponse(
-            json.dumps(image_id),
+            json.dumps({'msg': 'success'}),
             content_type="application/json"
         )
