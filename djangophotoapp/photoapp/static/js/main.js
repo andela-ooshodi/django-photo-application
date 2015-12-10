@@ -9,10 +9,6 @@ $(document).ready(function () {
         var url = $(this).attr("action");
         var image = $(this).find("input[type='file']")[0].files[0];
         fd.append("image", image);
-        var other_data = $(this).serializeArray();
-        $.each(other_data, function(key, input) {
-            fd.append(input.name, input.value);
-        });
         upload_image(fd, url);
     });
     // AJAX for uploading image
