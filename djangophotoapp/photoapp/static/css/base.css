@@ -138,11 +138,11 @@ nav ul li {
     position: relative;
 }
 
-.images:hover #edit, .images:hover #delete {
+.images:hover .edit, .images:hover .delete {
     display: inline-block;
 }
 
-#edit {
+.edit {
     position: absolute;
     top: 17px;
     right: 45px;
@@ -155,7 +155,7 @@ nav ul li {
     transition: all 0.5s ease;
 }
 
-#delete {
+.delete {
     position: absolute;
     top: 17px;
     right: 1px;

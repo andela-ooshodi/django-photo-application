@@ -59,3 +59,11 @@ class HomeView(LoginRequiredMixin, TemplateView):
             json.dumps({'msg': 'success'}),
             content_type="application/json"
         )
+
+    def delete(self, request, **kwargs):
+        image_id = int(request.body.split('=')[1])
+
+        return HttpResponse(
+            json.dumps(image_id),
+            content_type="application/json"
+        )

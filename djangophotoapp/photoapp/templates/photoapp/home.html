@@ -48,12 +48,23 @@
     <div class="divider"></div>
     <div class="uploaded-images">
     {% for image in images %}
-    <div class="section images">
+    <div id="section-{{ image.id }}" class="section images">
         <img class="responsive-img" src="http://res.cloudinary.com/myphotoapp/c_scale,h_150,w_250/{{ image.image }}"/>
-        <a href="#" id="delete" class="btn hoverable right"><i class="mdi mdi-delete"></i></a>
-        <a href="#" id="edit" class="btn hoverable right"><i class="mdi mdi-pencil"></i></a>     
+        <a href="#delete-{{ image.id }}" class="delete btn modal-trigger hoverable right"><i class="mdi mdi-delete"></i></a>
+        <a href="#" id="edit-{{ image.id }}" class="edit btn hoverable right"><i class="mdi mdi-pencil"></i></a>
+        <!-- Confirm Delete Modal -->
+        <div id="delete-{{ image.id }}" class="modal">
+            <div class="modal-content">
+              <h4>Confirm Delete</h4>
+              <p>Are you sure you want to delete this image?</p>
+            </div>
+            <div class="modal-footer">
+              <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">No</a>
+              <a href="#!" id="d-{{ image.id }}" class="delete-image modal-action modal-close waves-effect waves-green btn-flat">Yes</a>
+            </div>
+        </div>  
     </div>
-    <div class="divider"></div>
+    <div id="divider-{{ image.id }}" class="divider"></div>
     {% empty %}
     <div class="section">
         <div class="card-panel">Your uploaded images will appear here</div>

@@ -1,6 +1,9 @@
 $(document).ready(function () {
     $("#flash-message").fadeOut(3000);
+    // Triggers sidebar on mobile view
     $(".button-collapse").sideNav();
+    // Triggers modal
+    $('.modal-trigger').leanModal();
 
     // Upload Image on submit
     $("#upload-form").on("submit", function(event) {
@@ -22,8 +25,29 @@ $(document).ready(function () {
 
             // On success
             success: function(json) {
-                    $(".uploaded-images").load(document.URL + " .uploaded-images");
+                $(".uploaded-images").load(document.URL + " .uploaded-images");
                 },
+        });
+    };
+
+    // Delete Image
+    $('body').on('click', '.delete-image', function() {
+        var image_id = $(this).attr('id').split('-')[1];
+        var url = '/home';
+        delete_image(image_id, url);
+    });
+    // AJAX for deleting image
+    function delete_image(image_id, url) {
+        $.ajax({
+            url: url,
+            type: 'DELETE',
+            data: {
+                image_id: image_id
+            },
+            success: function(json) {
+                $("#section-" + json).hide();
+                $("#divider-" + json).hide();
+            },
         });
     };
 });
