@@ -1,4 +1,4 @@
-from django.shortcuts import redirect
+from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseNotAllowed
 from django.views.generic import TemplateView
 from django.contrib.auth.decorators import login_required
@@ -81,3 +81,11 @@ class HomeView(LoginRequiredMixin, TemplateView):
             json.dumps({'msg': 'success'}),
             content_type="application/json"
         )
+
+
+def custom404(request):
+    return render(request, 'photoapp/404.html')
+
+
+def custom500(request):
+    return render(request, 'photoapp/500.html')

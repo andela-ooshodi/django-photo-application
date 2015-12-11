@@ -5,6 +5,29 @@ body {
     color: #361414;
 }
 
+.custom-error {
+    margin-top: 7%;
+}
+
+.error {
+    background-color: #1992BF;
+    display: block;
+    margin: auto;
+}
+
+.error:hover {
+    background-color: #1992BF;
+}
+
+#error-logo {
+    display: block;
+    margin: auto;
+    font-size: 200px;
+    color: #ff471a;
+    opacity: 0.9;
+    text-align: center;
+}
+
 /*-------------------- Login page styling */
 #facebook-button {
     background-color: #3B5998;
