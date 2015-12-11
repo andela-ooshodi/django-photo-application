@@ -20,7 +20,7 @@ class LoginView(TemplateView):
             messages.add_message(
                 request, messages.SUCCESS, 'Welcome back!')
             return redirect(
-                '/',
+                '/home',
                 context_instance=RequestContext(request)
             )
         return super(LoginView, self).dispatch(request, *args, **kwargs)

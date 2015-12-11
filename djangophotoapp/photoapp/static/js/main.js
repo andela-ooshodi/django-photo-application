@@ -3,7 +3,7 @@ $(document).ready(function() {
     // Triggers sidebar on mobile view
     $(".button-collapse").sideNav();
     // Triggers modal
-    $('.modal-trigger').leanModal();
+    $(".modal-trigger").leanModal();
     // Upload Image on submit
     $("#upload-form").on("submit", function(event) {
         event.preventDefault();
@@ -24,30 +24,40 @@ $(document).ready(function() {
             // On success
             success: function(json) {
                 $(".uploaded-images").load(document.URL + " .uploaded-images", function() {
-                    $('.modal-trigger').leanModal();
+                    $(".modal-trigger").leanModal();
                 });
             },
         });
     };
     // Delete Image
-    $('body').on('click', '.delete-image', function() {
-        var image_id = $(this).attr('id').split('-')[1];
-        var url = '/home';
+    $("body").on("click", ".delete-image", function() {
+        var image_id = $(this).attr("id").split("-")[1];
+        var url = "/home";
+        $("#section-" + image_id).hide();
+        $("#divider-" + image_id).hide();
         delete_image(image_id, url);
     });
     // AJAX for deleting image
     function delete_image(image_id, url) {
         $.ajax({
             url: url,
-            type: 'DELETE',
+            type: "DELETE",
             data: {
                 image_id: image_id
             },
             success: function(json) {
                 $(".uploaded-images").load(document.URL + " .uploaded-images", function() {
-                    $('.modal-trigger').leanModal();
+                    $(".modal-trigger").leanModal();
                 });
             },
         });
     };
+    // Focus image in the center of page
+    $("body").on("click", ".edit", function() {
+        var img_id = $(this).attr("id").split("-")[1];
+        var img_publicid = $("#img-" + img_id).attr("src").split("/")[5]
+        $("#img").attr("src", "http://res.cloudinary.com/myphotoapp/" + img_publicid);
+        $("#img").css("display", "block");
+        $(".top").css("padding", "10px");
+    });
 });

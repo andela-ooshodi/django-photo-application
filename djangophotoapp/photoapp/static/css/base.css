@@ -85,6 +85,7 @@ nav ul li {
     padding: 20px;  
     overflow-y: auto; 
     width: 280px;
+    height: 100%;
 }
 
 .content {
@@ -100,6 +101,14 @@ nav ul li {
     width: 100%;
 }
 
+.top {
+    background-color: #fff;
+    min-height: 100%;
+}
+
+.top #img {
+    display: none;
+    margin: auto;
 }
 
 .middle {

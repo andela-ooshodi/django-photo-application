@@ -49,9 +49,9 @@
     <div class="uploaded-images">
     {% for image in images %}
     <div id="section-{{ image.id }}" class="section images">
-        <img class="responsive-img" src="http://res.cloudinary.com/myphotoapp/c_scale,h_150,w_250/{{ image.image }}"/>
+        <img id="img-{{ image.id }}" class="responsive-img" src="http://res.cloudinary.com/myphotoapp/c_scale,h_150,w_250/{{ image.image }}"/>
         <a href="#delete-{{ image.id }}" class="delete btn modal-trigger hoverable right"><i class="mdi mdi-delete"></i></a>
-        <a href="#" id="edit-{{ image.id }}" class="edit btn hoverable right"><i class="mdi mdi-pencil"></i></a>
+        <a id="edit-{{ image.id }}" class="edit btn hoverable right"><i class="mdi mdi-pencil"></i></a>
         <!-- Confirm Delete Modal -->
         <div id="delete-{{ image.id }}" class="modal">
             <div class="modal-content">
@@ -82,6 +82,7 @@
                     <div class="col s12">
                         <div class="top">
                             <a id="upload-button" class="hide-on-large-only waves-effect waves-light btn card-panel hoverable right"><i class="mdi mdi-upload left"></i>Upload Image</a>
+                            <img id="img" class="responsive-img" src=""/>
                         </div>
                     </div>
                 </div>
