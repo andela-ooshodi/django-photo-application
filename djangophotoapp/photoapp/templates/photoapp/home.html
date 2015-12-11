@@ -37,7 +37,7 @@
         {% csrf_token %}
         <div class="file-field input-field file-input-form">
             <div class="file-path-wrapper file-input-text">
-                <input id="img-file-path" class="file-path validate" type="text" placeholder="Your selected image shows up here" readonly>
+                <input id="img-file-path" class="file-path validate" type="text" placeholder="Your image shows up here" readonly>
             </div>
             <div class="btn hoverable file-input">
                 <span>Select your Image</span>
@@ -47,6 +47,19 @@
         <button type="submit" id="upload-button-lg" class="waves-effect waves-light btn card-panel hoverable"><i class="mdi mdi-upload left"></i>Upload Image</button>
     </form>
     <div class="divider"></div>
+    <div class="preloader-wrapper active">
+        <div class="spinner-layer spinner-red-only">
+            <div class="circle-clipper left">
+                <div class="circle"></div>
+            </div>
+            <div class="gap-patch">
+                <div class="circle"></div>
+            </div>
+            <div class="circle-clipper right">
+                <div class="circle"></div>
+            </div>
+        </div>
+    </div>
     <div class="uploaded-images">
     {% for image in images %}
     <div id="section-{{ image.id }}" class="section images">

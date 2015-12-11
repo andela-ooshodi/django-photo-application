@@ -27,6 +27,7 @@ $(document).ready(function() {
     });
     // AJAX for uploading image
     function upload_image(fd, url) {
+        $('.preloader-wrapper').css("display", "block");
         $.ajax({
             url: url,
             type: "POST",
@@ -35,6 +36,8 @@ $(document).ready(function() {
             processData: false,
             // On success
             success: function(json) {
+                $('.preloader-wrapper').css("display", "none");
+                Materialize.toast("Upload Successful!", 4000);
                 $(".uploaded-images").load(document.URL + " .uploaded-images", function() {
                     $(".modal-trigger").leanModal();
                     $("#img-file").val("");
@@ -64,6 +67,7 @@ $(document).ready(function() {
                 image_id: image_id
             },
             success: function(json) {
+                Materialize.toast("Delete Successful!", 4000);
                 $(".uploaded-images").load(document.URL + " .uploaded-images", function() {
                     $(".modal-trigger").leanModal();
                 });

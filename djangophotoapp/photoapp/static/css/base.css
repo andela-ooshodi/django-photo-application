@@ -5,7 +5,7 @@ body {
     color: #361414;
 }
 
-/* Login page styling */
+/*-------------------- Login page styling */
 #facebook-button {
     background-color: #3B5998;
     height: 100%;
@@ -38,9 +38,9 @@ body {
     font-weight: 200;
 }
 
-/* end of styling */
+/*-------------------- end of styling */
 
-/* home page styling */
+/*-------------------- home page styling */
 #logo-navbar {
     color: #ff471a;
     margin: 0px 5px;
@@ -147,7 +147,7 @@ nav ul li {
     background-color: #1992BF;
 }
 
-/* styling file input placeholder */
+/*-------------------- styling file input placeholder */
 input.file-path::-webkit-input-placeholder {
    color: #ff471a;
    font-weight: bold;
@@ -166,7 +166,7 @@ input.file-path:-ms-input-placeholder {
    color: #ff471a;
    font-weight: bold;  
 }
-/* end of styling */
+/*-------------------- end of styling */
 
 .images {
     position: relative;
@@ -176,6 +176,7 @@ input.file-path:-ms-input-placeholder {
     display: inline-block;
 }
 
+/*-------------------- Image icons */
 .edit {
     position: absolute;
     top: 17px;
@@ -200,4 +201,11 @@ input.file-path:-ms-input-placeholder {
     background-color: #1992BF;  
     display: none;
     transition: all 0.5s ease;
+}
+/*-------------------- end of styling */
+
+/*-------------------- preloader */
+.preloader-wrapper {
+    display: none;
+    margin: 10px auto;
 }
