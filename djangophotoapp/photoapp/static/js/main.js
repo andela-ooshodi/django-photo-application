@@ -4,6 +4,18 @@ $(document).ready(function() {
     $(".button-collapse").sideNav();
     // Triggers modal
     $(".modal-trigger").leanModal();
+    // Make the input file empty
+    $("#img-file").val("");
+    $("#img-file-path").val("");
+
+
+    // Display the upload button after file has been attached
+    $("#img-file").on("change", function() {
+        $(".file-input").css("display", "none");
+        $("#upload-button-lg").css("display", "block");
+        $("#upload-form").css("margin-bottom", "20px");
+    });
+
     // Upload Image on submit
     $("#upload-form").on("submit", function(event) {
         event.preventDefault();
@@ -25,10 +37,16 @@ $(document).ready(function() {
             success: function(json) {
                 $(".uploaded-images").load(document.URL + " .uploaded-images", function() {
                     $(".modal-trigger").leanModal();
+                    $("#img-file").val("");
+                    $("#img-file-path").val("");
+                    $(".file-input").css("display", "block");
+                    $("#upload-button-lg").css("display", "none");
+                    $("#upload-form").css("margin-bottom", "50px");
                 });
             },
         });
     };
+
     // Delete Image
     $("body").on("click", ".delete-image", function() {
         var image_id = $(this).attr("id").split("-")[1];
@@ -52,7 +70,8 @@ $(document).ready(function() {
             },
         });
     };
-    // Focus image in the center of page
+
+    // Focus the image to the center of page
     $("body").on("click", ".edit", function() {
         var img_id = $(this).attr("id").split("-")[1];
         var img_publicid = $("#img-" + img_id).attr("src").split("/")[5]

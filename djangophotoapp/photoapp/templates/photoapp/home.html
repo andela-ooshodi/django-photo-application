@@ -37,11 +37,12 @@
         {% csrf_token %}
         <div class="file-field input-field file-input-form">
             <div class="file-path-wrapper file-input-text">
-                <input class="file-path validate" type="text" placeholder="Click here to attach your image">
-              </div>
-              <div class="file-input">
-                <input name="image" type="file">
-              </div>      
+                <input id="img-file-path" class="file-path validate" type="text" placeholder="Your selected image shows up here" readonly>
+            </div>
+            <div class="btn hoverable file-input">
+                <span>Select your Image</span>
+                <input id="img-file" name="image" type="file">
+            </div>      
         </div>
         <button type="submit" id="upload-button-lg" class="waves-effect waves-light btn card-panel hoverable"><i class="mdi mdi-upload left"></i>Upload Image</button>
     </form>
@@ -81,8 +82,12 @@
                 <div class="row">
                     <div class="col s12">
                         <div class="top">
-                            <a id="upload-button" class="hide-on-large-only waves-effect waves-light btn card-panel hoverable right"><i class="mdi mdi-upload left"></i>Upload Image</a>
-                            <img id="img" class="responsive-img" src=""/>
+                            <div class="hide-on-large-only col s12">
+                                <a id="upload-button" class="hide-on-large-only waves-effect waves-light btn card-panel hoverable right"><i class="mdi mdi-upload left"></i>Upload Image</a>
+                            </div>
+                            <div class="single-view valign-wrapper">
+                                <img id="img" class="responsive-img valign" src=""/>
+                            </div>
                         </div>
                     </div>
                 </div>

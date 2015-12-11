@@ -99,9 +99,10 @@ nav ul li {
 #upload-button-lg {
     background-color: #1992BF;   
     width: 100%;
+    display: none;
 }
 
-.top {
+.single-view {
     background-color: #fff;
     height: 500px;
     overflow: auto;
@@ -109,7 +110,7 @@ nav ul li {
     padding: 10px;
 }
 
-.top #img {
+.single-view #img {
     display: none;
     margin: auto;
 }
@@ -124,12 +125,8 @@ nav ul li {
     min-height: 100%;
 }
 
-.file-input-form {
-    position: relative;
-}
-
-.file-input-text {
-    position: relative;
+#upload-form {
+    margin-bottom: 50px;
 }
 
 .file-field .file-path-wrapper {
@@ -137,14 +134,39 @@ nav ul li {
 }
 
 .file-input {
-    position: absolute;
-    left: 0;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    opacity: 0;
-
+    position: relative;
+    background-color: #1992BF;
 }
+
+.file-field .btn {
+    height: 2.4rem;
+    line-height: 2.4rem;
+}
+
+.file-field .btn:hover {
+    background-color: #1992BF;
+}
+
+/* styling file input placeholder */
+input.file-path::-webkit-input-placeholder {
+   color: #ff471a;
+   font-weight: bold;
+}
+input.file-path:-moz-placeholder { /* Firefox 18- */
+   color: #ff471a;
+   font-weight: bold;  
+}
+
+input.file-path::-moz-placeholder {  /* Firefox 19+ */
+   color: #ff471a;
+   font-weight: bold;  
+}
+
+input.file-path:-ms-input-placeholder {  
+   color: #ff471a;
+   font-weight: bold;  
+}
+/* end of styling */
 
 .images {
     position: relative;
