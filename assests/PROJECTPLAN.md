@@ -7,7 +7,7 @@ Start Date
 **27/11/2015**
 
 End Date
-**11/12/2015**
+**14/12/2015**
 
 
 ### Application Overview
@@ -25,8 +25,7 @@ myPhotoApp is an image editing app allowing you to add different effects to your
 - Database: postgreSQL
 - Social Authentication: python social auth
 - Image database: Cloudinary
-- Background task-runner: Celery
-- Broker: RabbitMQ
+- Asynchronous rendering: AJAX
 - Frontend framework: Materialize
 - Frontend dependencies manager: Bower
 
