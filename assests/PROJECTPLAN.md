@@ -39,7 +39,7 @@ myPhotoApp is an image editing app allowing you to add different effects to your
 | Facebook Authentication | 2 |
 | Create templates for the project | 2 |
 | Create the application models | 2 |
-| Implement logic to upload images (configure celery, rabbitMQ and cloudinary) | 2 |
+| Implement logic to upload images (AJAX and cloudinary) | 2 |
 | Implement logic to apply effects to images | 3 |
 | Implement logic to share edited images via facebook or link | 2 |
 | Draft out README.md | 1 |
