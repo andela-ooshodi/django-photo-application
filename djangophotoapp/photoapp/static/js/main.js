@@ -58,6 +58,5 @@ $(document).ready(function() {
         var img_publicid = $("#img-" + img_id).attr("src").split("/")[5]
         $("#img").attr("src", "http://res.cloudinary.com/myphotoapp/" + img_publicid);
         $("#img").css("display", "block");
-        $(".top").css("padding", "10px");
     });
 });
