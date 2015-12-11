@@ -1,5 +1,5 @@
 from django.shortcuts import redirect
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseNotAllowed
 from django.views.generic import TemplateView
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
@@ -50,16 +50,21 @@ class HomeView(LoginRequiredMixin, TemplateView):
         return context
 
     def post(self, request, **kwargs):
-        form = self.form_class(request.POST, request.FILES)
-        image = form.save(commit=False)
-        image.image_file_name = form.files['image'].name
-        image.owner = request.user
-        image.save()
+        try:
+            form = self.form_class(request.POST, request.FILES)
+            image = form.save(commit=False)
+            image.image_file_name = form.files['image'].name
+            image.owner = request.user
+            image.save()
 
-        return HttpResponse(
-            json.dumps({'msg': 'success'}),
-            content_type="application/json"
-        )
+            return HttpResponse(
+                json.dumps({'msg': 'success'}),
+                content_type="application/json"
+            )
+        except:
+            return HttpResponseNotAllowed(
+                'invalidfile',
+                content_type='text/plain')
 
     def delete(self, request, **kwargs):
         image_id = int(request.body.split('=')[1])

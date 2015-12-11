@@ -47,6 +47,12 @@ $(document).ready(function() {
                     $("#upload-form").css("margin-bottom", "50px");
                 });
             },
+            error: function(status) {
+                $('.preloader-wrapper').css("display", "none");
+                $("#img-file").val("");
+                $("#img-file-path").val("");
+                Materialize.toast("Invalid File Input!", 4000);
+            }
         });
     };
 
