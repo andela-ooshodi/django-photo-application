@@ -22,14 +22,6 @@
     </div>
 </nav>
 
-{% if messages %}
-    {% for message in messages %}
-        <div class="alert alert-{{ message.tags }}" role="alert" id="flash-message">
-            {{ message }}
-        </div>
-    {% endfor %}    
-{% endif %}
-
 <!-- Page Layout -->
 <!-- Sidebar -->
 <div class="sidebar hide-on-med-and-down">
@@ -37,7 +29,7 @@
         {% csrf_token %}
         <div class="file-field input-field file-input-form">
             <div class="file-path-wrapper file-input-text">
-                <input id="img-file-path" class="file-path validate" type="text" placeholder="Your image shows up here" readonly>
+                <input id="img-file-path" class="file-path validate" type="text" placeholder="Please select your image" readonly>
             </div>
             <div class="btn hoverable file-input">
                 <span>Select your Image</span>
@@ -96,7 +88,32 @@
                     <div class="col s12">
                         <div class="top">
                             <div class="hide-on-large-only col s12">
-                                <a id="upload-button" class="hide-on-large-only waves-effect waves-light btn card-panel hoverable right"><i class="mdi mdi-upload left"></i>Upload Image</a>
+                                <form role="form" action="/home" method="post" enctype="multipart/form-data" id="upload-form-mobile">
+                                    {% csrf_token %}
+                                    <div class="file-field input-field file-input-form-mobile"> 
+                                        <div class="file-path-wrapper file-input-text-mobile">
+                                            <input id="img-file-path" class="file-path validate" type="text" placeholder="Please select your image" readonly>
+                                        </div> 
+                                        <div class="btn hoverable file-input-mobile">
+                                            <span>Select your Image</span>
+                                            <input id="img-file" name="image" type="file" accept="image/*">
+                                        </div>    
+                                    </div>
+                                    <button type="submit" id="upload-button-mobile" class="waves-effect waves-light btn card-panel hoverable right"><i class="mdi mdi-upload left"></i>Upload Image</button>
+                                </form>
+                                <div class="preloader-wrapper small active preloader-mobile">
+                                    <div class="spinner-layer spinner-red-only">
+                                        <div class="circle-clipper left">
+                                            <div class="circle"></div>
+                                        </div>
+                                        <div class="gap-patch">
+                                            <div class="circle"></div>
+                                        </div>
+                                        <div class="circle-clipper right">
+                                            <div class="circle"></div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <div class="single-view valign-wrapper">
                                 <img id="img" class="responsive-img valign" src=""/>

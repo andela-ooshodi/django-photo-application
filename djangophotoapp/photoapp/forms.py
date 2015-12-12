@@ -11,5 +11,6 @@ class ImageForm(ModelForm):
 
     image = CloudinaryFileField(
         options={
-            'use_filename': True
+            'use_filename': True,
+            'allowed_formats': ['jpg', 'png', 'gif', 'tiff', 'bmp']
         })

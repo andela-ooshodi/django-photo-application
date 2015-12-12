@@ -3,8 +3,6 @@ from django.http import HttpResponse, HttpResponseNotAllowed
 from django.views.generic import TemplateView
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
-from django.contrib import messages
-from django.template import RequestContext
 from photoapp.models import UserProfile, Images
 from photoapp.forms import ImageForm
 from cloudinary import api
@@ -17,12 +15,7 @@ class LoginView(TemplateView):
 
     def dispatch(self, request, *args, **kwargs):
         if request.user.is_authenticated():
-            messages.add_message(
-                request, messages.SUCCESS, 'Welcome back!')
-            return redirect(
-                '/home',
-                context_instance=RequestContext(request)
-            )
+            return redirect('/home')
         return super(LoginView, self).dispatch(request, *args, **kwargs)
 
 
@@ -57,9 +50,20 @@ class HomeView(LoginRequiredMixin, TemplateView):
             image.owner = request.user
             image.save()
 
+            # returning the publicid of the latest upload to be used in mobile
+            # view (less than 992px)
+            newest_image = Images.objects.filter(
+                owner_id=self.request.user.id).order_by('-date_created')[0]
+
+            # public id of the latest image uploaded
+            newest_publicid = newest_image.image.public_id
+
             return HttpResponse(
-                json.dumps({'msg': 'success'}),
-                content_type="application/json"
+                json.dumps({
+                    'msg': 'success',
+                    'publicid': newest_publicid
+                }),
+                content_type='application/json'
             )
         except:
             return HttpResponseNotAllowed(
@@ -79,7 +83,7 @@ class HomeView(LoginRequiredMixin, TemplateView):
 
         return HttpResponse(
             json.dumps({'msg': 'success'}),
-            content_type="application/json"
+            content_type='application/json'
         )
 
 
