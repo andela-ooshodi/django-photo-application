@@ -18,6 +18,8 @@ myPhotoApp is an image editing app allowing you to add different effects to your
 - Apply up to 5 effects to your image
 - Share your images with your friends on facebook
 - Sign in with facebook
+- Optimized for screens larger than 992px
+- Responsive design
 
 ##### Technologies Used
 - Language: Python
