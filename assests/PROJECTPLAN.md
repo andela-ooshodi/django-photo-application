@@ -15,10 +15,10 @@ End Date
 myPhotoApp is an image editing app allowing you to add different effects to your awesome image making it _"awesomer"_ 
 
 ##### Features
+- Sign in with facebook
 - Apply up to 5 effects to your image
 - Share your images with your friends on facebook
-- Sign in with facebook
-- Optimized for screens larger than 992px
+- View all uploaded images on screens larger than 992px (Desktop)
 - Responsive design
 
 ##### Technologies Used
@@ -28,6 +28,7 @@ myPhotoApp is an image editing app allowing you to add different effects to your
 - Social Authentication: python social auth
 - Image database: Cloudinary
 - Asynchronous rendering: AJAX
+- Image filtering: CamanJS
 - Frontend framework: Materialize
 - Frontend dependencies manager: Bower
 
