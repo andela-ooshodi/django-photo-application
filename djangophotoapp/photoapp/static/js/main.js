@@ -124,17 +124,20 @@ $(document).ready(function() {
                 // Display the image in the center after upload
                 var img_publicid = json.publicid;
                 $("#img").attr("src", "http://res.cloudinary.com/myphotoapp/" + img_publicid);
-                $("#img").css("display", "block");
                 $("#upload-form-mobile #img-file").val("");
                 $("#upload-form-mobile #img-file-path").val("");
                 Materialize.toast("Upload Successful!", 4000);
                 $(".preloader-mobile").css("display", "none");
+                var img_src = $("#img").attr("src");
+                $("#canvas").css("display", "block");
+                $("#canvas").css("margin", "auto");
+                filter(img_src);
             },
             error: function(status) {
-                $(".preloader-mobile").css("display", "none");
                 $("#upload-form-mobile #img-file").val("");
                 $("#upload-form-mobile #img-file-path").val("");
                 Materialize.toast("Invalid File Input!", 4000);
+                $(".preloader-mobile").css("display", "none");
             }
         });
     };

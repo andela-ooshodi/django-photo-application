@@ -1,5 +1,6 @@
 {% extends "photoapp/base.html" %}
 {% load cloudinary %} 
+{% load staticfiles %}
 
 {% block title %}myPhotoApp Home{% endblock %}
 
@@ -7,7 +8,7 @@
 <!-- Navbar -->
 <nav>
     <div class="nav-wrapper">
-        <a href="/home" class="brand-logo"><i id="logo-navbar" class="mdi mdi-camera-iris"></i>myPhotoApp</a>
+        <a href="/home" class="brand-logo"><img id="logo-navbar" class="responsive-img" src="{% static 'img/myphotoapp-icon-small.png' %}"/>myPhotoApp</a>
         <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
         <ul class="right hide-on-med-and-down">
             <li class="valign-wrapper profile-pic"><img class="valign circle responsive-img" src="{{ profilepic.photo }}"/></li>
