@@ -7,21 +7,20 @@
 <!-- Navbar -->
 <nav>
     <div class="nav-wrapper">
-      <a href="/home" class="brand-logo"><i id="logo-navbar" class="mdi mdi-camera-iris"></i>myPhotoApp</a>
-      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-      <ul class="right hide-on-med-and-down">
-        <li class="valign-wrapper profile-pic"><img class="valign circle responsive-img" src="{{ profilepic.photo }}"/></li>
-        <li>Logged in as {{ request.user.first_name }} {{ request.user.last_name }}</li>
-        <li><a href="/logout">Logout</a></li>   
-      </ul>
-      <ul class="side-nav" id="mobile-demo">
-        <li><img class="circle responsive-img" src="{{ profilepic.photo }}"/></li>
-        <li>Logged in as <br> {{ request.user.first_name }} {{ request.user.last_name }}</li>
-        <li><a id="logout" href="/logout">Logout</a></li>
-      </ul>
+        <a href="/home" class="brand-logo"><i id="logo-navbar" class="mdi mdi-camera-iris"></i>myPhotoApp</a>
+        <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+        <ul class="right hide-on-med-and-down">
+            <li class="valign-wrapper profile-pic"><img class="valign circle responsive-img" src="{{ profilepic.photo }}"/></li>
+            <li>Logged in as {{ request.user.first_name }} {{ request.user.last_name }}</li>
+            <li><a href="/logout">Logout</a></li>   
+        </ul>
+        <ul class="side-nav" id="mobile-demo">
+            <li><img class="circle responsive-img" src="{{ profilepic.photo }}"/></li>
+            <li>Logged in as <br> {{ request.user.first_name }} {{ request.user.last_name }}</li>
+            <li><a id="logout" href="/logout">Logout</a></li>
+        </ul>
     </div>
 </nav>
-
 <!-- Page Layout -->
 <!-- Sidebar -->
 <div class="sidebar hide-on-med-and-down">
@@ -80,65 +79,67 @@
     </div>  
 </div>
 <!-- Page content -->
-<div class="container">
-    <div class="content">
-        <div class="row">
-            <div class="col s12 m12 l10 push-l2">
-                <div class="row">
-                    <div class="col s12">
-                        <div class="top">
-                            <div class="hide-on-large-only col s12">
-                                <form role="form" action="/home" method="post" enctype="multipart/form-data" id="upload-form-mobile">
-                                    {% csrf_token %}
-                                    <div class="file-field input-field file-input-form-mobile"> 
-                                        <div class="file-path-wrapper file-input-text-mobile">
-                                            <input id="img-file-path" class="file-path validate" type="text" placeholder="Please select your image" readonly>
-                                        </div> 
-                                        <div class="btn hoverable file-input-mobile">
-                                            <span>Select your Image</span>
-                                            <input id="img-file" name="image" type="file" accept="image/*">
-                                        </div>    
+
+<div class="content">
+    <div class="row">
+        <div class="col s12 m12 l9 push-l3">
+            <div class="row">
+                <div class="col s12">
+                    <div class="hide-on-large-only col s12">
+                            <form role="form" action="/home" method="post" enctype="multipart/form-data" id="upload-form-mobile">
+                                {% csrf_token %}
+                                <div class="file-field input-field file-input-form-mobile"> 
+                                    <div class="file-path-wrapper file-input-text-mobile">
+                                        <input id="img-file-path" class="file-path validate" type="text" placeholder="Please select your image" readonly>
+                                    </div> 
+                                    <div class="btn hoverable file-input-mobile">
+                                        <span>Select your Image</span>
+                                        <input id="img-file" name="image" type="file" accept="image/*">
+                                    </div>    
+                                </div>
+                                <button type="submit" id="upload-button-mobile" class="waves-effect waves-light btn card-panel hoverable right"><i class="mdi mdi-upload left"></i>Upload Image</button>
+                            </form>
+                            <div class="preloader-wrapper small active preloader-mobile">
+                                <div class="spinner-layer spinner-red-only">
+                                    <div class="circle-clipper left">
+                                        <div class="circle"></div>
                                     </div>
-                                    <button type="submit" id="upload-button-mobile" class="waves-effect waves-light btn card-panel hoverable right"><i class="mdi mdi-upload left"></i>Upload Image</button>
-                                </form>
-                                <div class="preloader-wrapper small active preloader-mobile">
-                                    <div class="spinner-layer spinner-red-only">
-                                        <div class="circle-clipper left">
-                                            <div class="circle"></div>
-                                        </div>
-                                        <div class="gap-patch">
-                                            <div class="circle"></div>
-                                        </div>
-                                        <div class="circle-clipper right">
-                                            <div class="circle"></div>
-                                        </div>
+                                    <div class="gap-patch">
+                                        <div class="circle"></div>
+                                    </div>
+                                    <div class="circle-clipper right">
+                                        <div class="circle"></div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="single-view valign-wrapper">
-                                <img id="img" class="responsive-img valign" src=""/>
-                            </div>
-                        </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col s12">
-                        <div class="middle">
-                            
-                        </div>
+            </div>
+            <div class="row">
+                <div class="col s12 m12 l9">
+                    <div class="single-view valign-wrapper">
+                        <canvas id="canvas">
+                            <img id="img" class="responsive-img valign" src=""/>
+                        </canvas>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col s12">
-                        <div class="bottom">
-                            
-                        </div>
+                <div class="col s12 m12 l3">
+                    <div class="filters">
+                        <button id="savebtn" class="waves-effect waves-light btn hoverable">Save Image</button>
+                        <button id="resetbtn" class="waves-effect waves-light btn hoverable">Reset Photo</button>
+                        <button id="noisebtn" class="waves-effect waves-light btn hoverable">Noise</button>
+                        <button id="sepiabtn" class="waves-effect waves-light btn hoverable">Sepia</button>
+                        <button id="contrastbtn" class="waves-effect waves-light btn hoverable">Contrast</button>
+                        <button id="vintagebtn" class="waves-effect waves-light btn hoverable">Vintage</button>
+                        <button id="embossbtn" class="waves-effect waves-light btn hoverable">Emboss</button>
+                        <button id="orangepeelbtn" class="waves-effect waves-light btn hoverable">Orange Peel</button>
+                        <button id="sunrisebtn" class="waves-effect waves-light btn hoverable">Sun Rise</button>
+                        <button id="oldpaperbtn" class="waves-effect waves-light btn hoverable">Old Paper</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
 
 {% endblock body %}

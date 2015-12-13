@@ -135,15 +135,31 @@ nav ul li {
     margin: auto;
 }
 
-.middle {
-    background-color: #fff;
-    min-height: 100%
+.filters {
+    margin-top: 10px;
+    max-height: 500px;
+    overflow: auto;
 }
 
-.bottom {
+.filters .btn {
+    display: block;
+    margin-bottom: 10px;
     background-color: #fff;
-    min-height: 100%;
+    color: #361414;
 }
+
+.filters .btn:hover {
+    background-color: #fff;
+    color: #361414;
+}
+
+#resetbtn, #savebtn {
+    background-color: #1992BF;
+}
+
+#resetbtn:hover, #savebtn:hover {
+    background-color: #1992BF;
+} 
 
 #upload-form {
     margin-bottom: 50px;
@@ -264,7 +280,18 @@ input.file-path:-ms-input-placeholder {
 
 @media (max-width: 992px) {
     .single-view {
-        margin-left: 0px;
+        margin-left: 10px;
+        margin-bottom: 20px;
+    }
+
+    .filters {
+        margin-left: 10px;
+    }
+
+    .filters .btn {
+        display: inline-block;
+        margin-bottom: 10px;
+        margin-right: 10px;
     }
 }
 

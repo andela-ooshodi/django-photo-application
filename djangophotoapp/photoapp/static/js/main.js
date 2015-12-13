@@ -88,7 +88,16 @@ $(document).ready(function() {
         var img_id = $(this).attr("id").split("-")[1];
         var img_publicid = $("#img-" + img_id).attr("src").split("/")[5]
         $("#img").attr("src", "http://res.cloudinary.com/myphotoapp/" + img_publicid);
-        $("#img").css("display", "block");
+        var img_src = $("#img").attr("src");
+        $("#canvas").css("display", "block");
+        $("#canvas").css("margin", "auto");
+        filter(img_src);
+    });
+
+    // Reset the canvas with the current image
+    $('#resetbtn').on('click', function(e) {
+        var current_img = $('#img').attr('src');
+        filter(current_img);
     });
 
     //////////////// Mobile view (less than 992px) //////////////////

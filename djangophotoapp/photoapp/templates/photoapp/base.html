@@ -2,26 +2,28 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-      {% block head %}
-      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-      <link href="https://fonts.googleapis.com/css?family=Lato:400,900,100,300" rel="stylesheet" type="text/css">
-      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-      <link rel="shortcut icon" href="{% static 'img/myphotoapp-icon.png' %}" type="image/x-icon">
-      <link rel="icon" href="{% static 'img/myphotoapp-icon.png' %}" type="image/x-icon">
-      <link href="{% static 'lib/Materialize/dist/css/materialize.min.css' %}" rel="stylesheet"/>
-      <link href="{% static 'lib/mdi/css/materialdesignicons.min.css' %}" type="text/css" rel="stylesheet"/>
-      <link href="{% static 'css/base.css' %}" type="text/css" rel="stylesheet"/>
-      {% endblock head %}
-      <title>{% block title %}myPhotoApp{% endblock title %}</title>
+        {% block head %}
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link href="https://fonts.googleapis.com/css?family=Lato:400,900,100,300" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="shortcut icon" href="{% static 'img/myphotoapp-icon.png' %}" type="image/x-icon">
+        <link rel="icon" href="{% static 'img/myphotoapp-icon.png' %}" type="image/x-icon">
+        <link href="{% static 'lib/Materialize/dist/css/materialize.min.css' %}" rel="stylesheet"/>
+        <link href="{% static 'lib/mdi/css/materialdesignicons.min.css' %}" type="text/css" rel="stylesheet"/>
+        <link href="{% static 'css/base.css' %}" type="text/css" rel="stylesheet"/>
+        {% endblock head %}
+        <title>{% block title %}myPhotoApp{% endblock title %}</title>
     </head>
 
     <body>
-      {% block body %}
-      {% endblock body %}
-      
-      <script src="{% static 'lib/jquery/dist/jquery.min.js' %}"></script>
-      <script src="{% static 'lib/Materialize/dist/js/materialize.min.js' %}"></script>
-      <script src="{% static 'js/main.js' %}"></script>
-      <script src="{% static 'js/ajaxsetup.js' %}"></script>
+        {% block body %}
+        {% endblock body %}
+
+        <script src="{% static 'lib/jquery/dist/jquery.min.js' %}"></script>
+        <script src="{% static 'lib/Materialize/dist/js/materialize.min.js' %}"></script>
+        <script src="{% static 'lib/caman/dist/caman.full.min.js' %}"></script>
+        <script src="{% static 'js/camanfilters.js' %}"></script>
+        <script src="{% static 'js/main.js' %}"></script>
+        <script src="{% static 'js/ajaxsetup.js' %}"></script>
     </body>
 </html>
