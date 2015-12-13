@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from photoapp.models import UserProfile, Images
 from photoapp.forms import ImageForm
-from cloudinary import api
+from cloudinary import api, uploader
 
 import json
 
@@ -83,6 +83,21 @@ class HomeView(LoginRequiredMixin, TemplateView):
 
         return HttpResponse(
             json.dumps({'msg': 'success'}),
+            content_type='application/json'
+        )
+
+
+class UploadView(HomeView):
+
+    def post(self, request, **kwargs):
+        img_dataURL = str(request.POST.get('imgBase64'))
+
+        # upload to cloudinary
+        response = uploader.upload_large(img_dataURL)
+        filtered_url = response['url']
+
+        return HttpResponse(
+            json.dumps({'url': filtered_url}),
             content_type='application/json'
         )
 

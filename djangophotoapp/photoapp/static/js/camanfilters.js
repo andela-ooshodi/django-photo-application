@@ -20,7 +20,6 @@ function filter(img_src) {
     var $orangepeel = $('#orangepeelbtn');
     var $sunrise = $('#sunrisebtn')
     var $oldpaper = $('#oldpaperbtn');
-    var $save = $('#savebtn');
 
     /* Creating custom filters */
     Caman.Filter.register("oldpaper", function() {
@@ -80,15 +79,6 @@ function filter(img_src) {
         Caman('#canvas', img, function() {
             this.oldpaper();
             this.render();
-        });
-    });
-
-    /* You can also save it as a jpg image, extension need to be added later after saving image. */
-    $save.on('click', function(e) {
-        Caman('#canvas', img, function() {
-            this.render(function() {
-                this.save('png');
-            });
         });
     });
 };

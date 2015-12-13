@@ -147,13 +147,18 @@ nav ul li {
     color: #361414;
 }
 
-#resetbtn, #savebtn {
+#resetbtn, #sharebtn {
     background-color: #1992BF;
 }
 
-#resetbtn:hover, #savebtn:hover {
+#resetbtn:hover, #sharebtn:hover {
     background-color: #1992BF;
 } 
+
+.controlbtn {
+    margin-top: 10px;
+    margin-left: 20px;
+}
 
 #upload-form {
     margin-bottom: 50px;
@@ -240,6 +245,12 @@ input.file-path:-ms-input-placeholder {
     margin: 10px auto;
 }
 
+#preloadershare {
+    display: none;
+    margin: 0px 0px 0px 20px;
+    position: absolute;
+}
+
 /*-------------------- mobile view */
 #upload-button-mobile {
     background-color: #1992BF;
@@ -277,9 +288,14 @@ input.file-path:-ms-input-placeholder {
         margin-left: 10px;
         margin-bottom: 20px;
     }
+    
+    .controlbtn {
+        margin-left: 10px;
+    }
 
     .filters {
         margin-left: 10px;
+        margin-top: 10px;
     }
 
     .filters .btn {

@@ -1,4 +1,13 @@
 $(document).ready(function() {
+    ///////////// Load FB JS SDK asynchronously
+    $.getScript("//connect.facebook.net/en_US/sdk.js", function() {
+        FB.init({
+            appId: "1531263510520883",
+            version: "v2.5"
+        });
+    });
+    /////////////////////////////////////////////////////
+
     $("#flash-message").fadeOut(3000);
     // Triggers sidebar on mobile view
     $(".button-collapse").sideNav();
@@ -95,10 +104,45 @@ $(document).ready(function() {
     });
 
     // Reset the canvas with the current image
-    $('#resetbtn').on('click', function(e) {
-        var current_img = $('#img').attr('src');
+    $("#resetbtn").on("click", function(e) {
+        var current_img = $("#img").attr("src");
         filter(current_img);
     });
+
+    // Share image
+    $("#sharebtn").on("click", function(e) {
+        var canvas = document.getElementById('canvas');
+        var img_dataURL = canvas.toDataURL('image/jpeg', 0.1);
+        upload_edited_image(img_dataURL);
+    });
+    // AJAX for uploading edited image
+    function upload_edited_image(img_dataURL) {
+        console.log(img_dataURL);
+        $("#preloadershare").css("display", "inline-block");
+        $.ajax({
+            url: "/upload",
+            type: "POST",
+            data: { 
+                imgBase64: img_dataURL
+            },
+            // On success
+            success: function(json) {
+                FB.ui({
+                    method: "feed",
+                    link: location.href,
+                    caption:"myPhotoApp",
+                    picture: json.url,
+                    description: "I just used myPhotoApp to edit this photo and I love it."
+                },function(response){});
+                $("#preloadershare").css("display", "none");
+            },
+            error: function(status) {
+                console.log(status.responseText);
+                Materialize.toast("Could not share on your timeline at this time", 4000);
+                $("#preloadershare").css("display", "none");
+            }
+        });
+    };
 
     //////////////// Mobile view (less than 992px) //////////////////
     //  Upload image from mobile view
