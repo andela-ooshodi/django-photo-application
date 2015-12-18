@@ -274,6 +274,10 @@ input.file-path:-ms-input-placeholder {
     margin-bottom: 10px;
 }
 
+.file-field .btn.file-input-mobile {
+    width: auto;
+}
+
 .file-field .btn {
     height: 2.4rem;
     line-height: 2.4rem;

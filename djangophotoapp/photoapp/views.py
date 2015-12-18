@@ -1,10 +1,11 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse, HttpResponseNotAllowed
+from django.http import HttpResponse, HttpResponseNotAllowed, HttpResponseBadRequest
 from django.views.generic import TemplateView
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from photoapp.models import UserProfile, Images
 from photoapp.forms import ImageForm
+from djangophotoapp.settings.base import MAX_UPLOAD_SIZE
 
 import json
 import os
@@ -43,32 +44,36 @@ class HomeView(LoginRequiredMixin, TemplateView):
         return context
 
     def post(self, request, **kwargs):
-        try:
-            form = self.form_class(request.POST, request.FILES)
-            image = form.save(commit=False)
-            image.image_file_name = form.files['image'].name
-            image.owner = request.user
-            image.save()
+        form = self.form_class(request.POST, request.FILES)
+        file_size = form.files['image'].size
 
-            # returning the img src of the latest upload to be used in mobile
-            # view (less than 992px)
-            newest_image = Images.objects.filter(
-                owner_id=self.request.user.id).order_by('-date_created')[0]
+        if file_size < MAX_UPLOAD_SIZE:
+            try:
+                image = form.save(commit=False)
+                image.image_file_name = form.files['image'].name
+                image.owner = request.user
+                image.save()
 
-            # url of the latest image uploaded
-            newest_image_src = newest_image.image.url
+                # returning the img src of the latest
+                # upload to be used in mobile
+                # view (less than 992px)
+                newest_image = Images.objects.filter(
+                    owner_id=self.request.user.id).order_by('-date_created')[0]
 
-            return HttpResponse(
-                json.dumps({
-                    'msg': 'success',
-                    'newest_image_src': newest_image_src
-                }),
-                content_type='application/json'
-            )
-        except:
-            return HttpResponseNotAllowed(
-                'invalidfile',
-                content_type='text/plain')
+                # url of the latest image uploaded
+                newest_image_src = newest_image.image.url
+
+                return HttpResponse(
+                    json.dumps({
+                        'msg': 'success',
+                        'newest_image_src': newest_image_src
+                    }),
+                    content_type='application/json'
+                )
+            except:
+                return HttpResponseBadRequest('invalidfile')
+        else:
+            return HttpResponseNotAllowed('largefile')
 
     def delete(self, request, **kwargs):
         image_id = int(request.body.split('=')[1])

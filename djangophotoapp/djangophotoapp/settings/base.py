@@ -135,8 +135,6 @@ SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/home'
 
 SOCIAL_AUTH_LOGIN_URL = '/login'
 
-SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
-
 SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
     'fields': 'id,name,email',
 }
@@ -158,3 +156,6 @@ SOCIAL_AUTH_PIPELINE = (
 # Media root for uploaded image files
 MEDIA_URL = '/media/'
 MEDIA_ROOT = 'media'
+
+# Max file size 10MB
+MAX_UPLOAD_SIZE = 10485760

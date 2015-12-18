@@ -103,7 +103,11 @@ var uploadForm = {
             },
             error: function(status) {
                 $("#preloaderupload").css("display", "none");
-                Materialize.toast("Invalid File Input!", 4000);
+                if (status.status == 405) {
+                    Materialize.toast("Max upload allowed is 10MB!", 4000); 
+                } else {
+                    Materialize.toast("Invalid File Input!", 4000);   
+                }
                 empty_file_input();
                 hide_upload_button();
             }
