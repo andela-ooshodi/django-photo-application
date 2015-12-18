@@ -4,7 +4,11 @@ from django.contrib.auth.models import User
 
 
 def upload_path(instance, filename):
-    return 'uploads/%s_%s' % (str(time()).replace('.', '_'), filename)
+    return 'uploads/user_{0}/{1}_{2}'.format(
+        instance.owner.id,
+        str(time()).replace('.', '_'),
+        filename
+    )
 
 
 class UserProfile(models.Model):

@@ -13,6 +13,16 @@ function hide_upload_button() {
     $("#upload-form").css("margin-bottom", "50px");
 };
 
+// Activate modals after ajax load
+function activate_modal() {
+    empty_file_input();
+    hide_upload_button();
+    $(".modal-trigger").leanModal();
+    $(".lean-overlay").each(function(){
+        $(this).remove();
+    });
+};
+
 var eventListeners = {
     init: function() {
         // Display the upload button after file has been attached
@@ -89,11 +99,7 @@ var uploadForm = {
             success: function(json) {
                 $("#preloaderupload").css("display", "none");
                 Materialize.toast("Upload Successful!", 4000);
-                $(".uploaded-images").load(document.URL + " .uploaded-images", function() {
-                    $(".modal-trigger").leanModal();
-                    empty_file_input();
-                    hide_upload_button();
-                });
+                $(".uploaded-images").load(document.URL + " .uploaded-images", activate_modal);
             },
             error: function(status) {
                 $("#preloaderupload").css("display", "none");
@@ -149,8 +155,6 @@ var deleteImage = {
         $("body").on("click", ".delete-image", function() {
             var image_id = $(this).attr("id").split("-")[1];
             var url = "/home";
-            // $("#section-" + image_id).hide();
-            // $("#divider-" + image_id).hide();
             deleteImage.del(image_id, url);
         });
     },
@@ -163,10 +167,8 @@ var deleteImage = {
             },
             success: function(json) {
                 Materialize.toast("Delete Successful!", 4000);
-                $(".uploaded-images").load(document.URL + " .uploaded-images", function() {
-                    $(".modal-trigger").leanModal();
-                });
-            },
+                $(".uploaded-images").load(document.URL + " .uploaded-images", activate_modal)
+            }
         });
     }
 };

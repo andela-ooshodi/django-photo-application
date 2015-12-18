@@ -7,6 +7,7 @@ from photoapp.models import UserProfile, Images
 from photoapp.forms import ImageForm
 
 import json
+import os
 
 
 class LoginView(TemplateView):
@@ -71,10 +72,16 @@ class HomeView(LoginRequiredMixin, TemplateView):
 
     def delete(self, request, **kwargs):
         image_id = int(request.body.split('=')[1])
+
         image = Images.objects.get(pk=image_id)
+        image_path = image.image.path
 
         # delete from database
         image.delete()
+
+        # delete from file directory
+        if os.path.exists(image_path):
+            os.remove(image_path)
 
         return HttpResponse(
             json.dumps({'msg': 'success'}),
