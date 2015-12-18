@@ -12,10 +12,6 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
-import cloudinary
-import cloudinary.uploader
-import cloudinary.api
-
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -43,7 +39,6 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'photoapp',
     'social.apps.django_app.default',
-    'cloudinary',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -160,9 +155,6 @@ SOCIAL_AUTH_PIPELINE = (
     'photoapp.pipeline.get_profile_details',
 )
 
-# Cloudinary Configuration
-cloudinary.config(
-    cloud_name=os.getenv('CLOUD_NAME'),
-    api_key=os.getenv('API_KEY'),
-    api_secret=os.getenv('API_SECRET')
-)
+# Media root for uploaded image files
+MEDIA_URL = '/media/'
+MEDIA_ROOT = 'media'

@@ -1,5 +1,4 @@
 {% extends "photoapp/base.html" %}
-{% load cloudinary %} 
 {% load staticfiles %}
 
 {% block title %}myPhotoApp Home{% endblock %}
@@ -39,7 +38,7 @@
         <button type="submit" id="upload-button-lg" class="waves-effect waves-light btn card-panel hoverable"><i class="mdi mdi-upload left"></i>Upload Image</button>
     </form>
     <div class="divider"></div>
-    <div class="preloader-wrapper active">
+    <div id="preloaderupload" class="preloader-wrapper active">
         <div class="spinner-layer spinner-red-only">
             <div class="circle-clipper left">
                 <div class="circle"></div>
@@ -55,7 +54,7 @@
     <div class="uploaded-images">
     {% for image in images %}
     <div id="section-{{ image.id }}" class="section images">
-        <img id="img-{{ image.id }}" class="responsive-img" src="http://res.cloudinary.com/myphotoapp/c_scale,h_150,w_250/{{ image.image }}"/>
+        <img id="img-{{ image.id }}" class="responsive-img" src="{{ image.image.url }}"/>
         <a href="#delete-{{ image.id }}" class="delete btn modal-trigger hoverable right"><i class="mdi mdi-delete"></i></a>
         <a id="edit-{{ image.id }}" class="edit btn hoverable right"><i class="mdi mdi-pencil"></i></a>
         <!-- Confirm Delete Modal -->
@@ -119,9 +118,7 @@
             <div class="row">
                 <div class="col s12 m12 l9">
                     <div class="single-view valign-wrapper">
-                        <canvas id="canvas">
-                            <img id="img" class="responsive-img valign" src=""/>
-                        </canvas>
+                       <img id="img" class="responsive-img valign" src=""/>
                     </div>
                     <div class="controlbtn">
                         <button id="sharebtn" class="waves-effect waves-light btn hoverable"><i class="mdi mdi-facebook left"></i>Share on facebook</button>

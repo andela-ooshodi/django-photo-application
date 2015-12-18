@@ -26,9 +26,8 @@ myPhotoApp is an image editing app allowing you to add different effects to your
 - Framework: Django
 - Database: postgreSQL
 - Social Authentication: python social auth
-- Image database: Cloudinary
 - Asynchronous rendering: AJAX
-- Image filtering: CamanJS
+- Image filtering: Pillow
 - Frontend framework: Materialize
 - Frontend dependencies manager: Bower
 

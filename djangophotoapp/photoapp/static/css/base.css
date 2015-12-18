@@ -211,6 +211,11 @@ input.file-path:-ms-input-placeholder {
     display: inline-block;
 }
 
+.images img {
+    display: block;
+    margin: auto;
+}
+
 /*-------------------- Image icons */
 .edit {
     position: absolute;
@@ -240,7 +245,7 @@ input.file-path:-ms-input-placeholder {
 /*-------------------- end of styling */
 
 /*-------------------- preloader */
-.preloader-wrapper {
+#preloaderupload {
     display: none;
     margin: 10px auto;
 }

@@ -5,7 +5,6 @@ from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from photoapp.models import UserProfile, Images
 from photoapp.forms import ImageForm
-from cloudinary import api, uploader
 
 import json
 
@@ -50,18 +49,18 @@ class HomeView(LoginRequiredMixin, TemplateView):
             image.owner = request.user
             image.save()
 
-            # returning the publicid of the latest upload to be used in mobile
+            # returning the img src of the latest upload to be used in mobile
             # view (less than 992px)
             newest_image = Images.objects.filter(
                 owner_id=self.request.user.id).order_by('-date_created')[0]
 
-            # public id of the latest image uploaded
-            newest_publicid = newest_image.image.public_id
+            # url of the latest image uploaded
+            newest_image_src = newest_image.image.url
 
             return HttpResponse(
                 json.dumps({
                     'msg': 'success',
-                    'publicid': newest_publicid
+                    'newest_image_src': newest_image_src
                 }),
                 content_type='application/json'
             )
@@ -73,31 +72,12 @@ class HomeView(LoginRequiredMixin, TemplateView):
     def delete(self, request, **kwargs):
         image_id = int(request.body.split('=')[1])
         image = Images.objects.get(pk=image_id)
-        public_id = image.image.public_id
-
-        # delete from cloudinary
-        api.delete_resources([public_id])
 
         # delete from database
         image.delete()
 
         return HttpResponse(
             json.dumps({'msg': 'success'}),
-            content_type='application/json'
-        )
-
-
-class UploadView(HomeView):
-
-    def post(self, request, **kwargs):
-        img_dataURL = str(request.POST.get('imgBase64'))
-
-        # upload to cloudinary
-        response = uploader.upload_large(img_dataURL)
-        filtered_url = response['url']
-
-        return HttpResponse(
-            json.dumps({'url': filtered_url}),
             content_type='application/json'
         )
 
