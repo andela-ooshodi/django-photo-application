@@ -1,10 +1,12 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse, HttpResponseNotAllowed, HttpResponseBadRequest
-from django.views.generic import TemplateView
+from django.http import HttpResponse, HttpResponseNotAllowed,\
+    HttpResponseBadRequest
+from django.views.generic import View, TemplateView
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from photoapp.models import UserProfile, Images
 from photoapp.forms import ImageForm
+from photoapp.filters import ApplyFilter
 from djangophotoapp.settings.base import MAX_UPLOAD_SIZE
 
 import json
@@ -60,13 +62,16 @@ class HomeView(LoginRequiredMixin, TemplateView):
                 newest_image = Images.objects.filter(
                     owner_id=self.request.user.id).order_by('-date_created')[0]
 
+                # id of newest image
+                newest_image_id = newest_image.id
+
                 # url of the latest image uploaded
                 newest_image_src = newest_image.image.url
 
                 return HttpResponse(
                     json.dumps({
-                        'msg': 'success',
-                        'newest_image_src': newest_image_src
+                        'newest_image_src': newest_image_src,
+                        'newest_image_id': newest_image_id
                     }),
                     content_type='application/json'
                 )
@@ -86,10 +91,40 @@ class HomeView(LoginRequiredMixin, TemplateView):
 
         # delete from file directory
         if os.path.exists(image_path):
+            # split the image part
+            filepath, ext = os.path.splitext(image_path)
+            # create the filtered image path
+            new_filepath = filepath + "filtered" + ext
+            # delete image
             os.remove(image_path)
+            # delete filtered image
+            os.remove(new_filepath)
 
         return HttpResponse(
             json.dumps({'msg': 'success'}),
+            content_type='application/json'
+        )
+
+
+class FilterView(View):
+
+    """
+    Calls logic to apply image filtering
+    """
+
+    def get(self, request, *args, **kwargs):
+        imagesrc = str(request.GET['img_src'])
+        imageid = int(request.GET['img_id'])
+        imagefilter = str(request.GET['img_filter'])
+
+        # apply filter and get the path to the filtered image
+        filter_img = ApplyFilter(imageid, imagesrc, imagefilter)
+        filtered_img_path = filter_img.apply_filter()
+
+        return HttpResponse(
+            json.dumps({
+                'filtered_img_path': filtered_img_path
+            }),
             content_type='application/json'
         )
 

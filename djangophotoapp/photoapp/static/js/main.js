@@ -36,11 +36,15 @@ var eventListeners = {
             var img_id = $(this).attr("id").split("-")[1];
             var img_src = $("#img-" + img_id).attr("src")
             $("#img").attr("src", img_src);
+            $("#img").attr("data-img-src", img_src);
+            $("#img").attr("data-img-id", img_id);
             $("#img").css("display", "block");
+            $(".single-view").css({"height": "auto", "max-height": "500px"});
         });
         // Reset the canvas with the current image
         $("#resetbtn").on("click", function(e) {
-            var current_img = $("#img").attr("src");
+            var current_img = $("#img").attr("data-img-src");
+            $("#img").attr("src", current_img);
         });
         // Share image
         $("#sharebtn").on("click", function() {
@@ -104,9 +108,9 @@ var uploadForm = {
             error: function(status) {
                 $("#preloaderupload").css("display", "none");
                 if (status.status == 405) {
-                    Materialize.toast("Max upload allowed is 10MB!", 4000); 
+                    Materialize.toast("Max upload allowed is 10MB!", 4000);
                 } else {
-                    Materialize.toast("Invalid File Input!", 4000);   
+                    Materialize.toast("Invalid File Input!", 4000);
                 }
                 empty_file_input();
                 hide_upload_button();
@@ -139,8 +143,12 @@ var mobileUploadForm = {
                 // Display the image in the center after upload
                 $(".preloader-mobile").css("display", "none");
                 var img_src = json.newest_image_src;
+                var img_id = json.newest_image_id
                 $("#img").attr("src", img_src);
+                $("#img").attr("data-img-src", img_src);
+                $("#img").attr("data-img-id", img_id);
                 $("#img").css("display", "block");
+                $(".single-view").css({"height": "auto", "max-height": "500px"});
                 empty_file_input();
                 Materialize.toast("Upload Successful!", 4000);
             },
@@ -177,6 +185,37 @@ var deleteImage = {
     }
 };
 
+// Apply Filter
+var applyFilter = {
+    init: function() {
+        $("body").on("click", ".filter", function() {
+            var img_src = $("#img").attr("data-img-src");
+            var img_id = $("#img").attr("data-img-id");
+            var img_filter = $(this).attr("data-filter");
+            var url = "/filter";
+            applyFilter.filter(img_src, img_id, img_filter, url);
+        });
+    },
+    filter: function(img_src, img_id, img_filter, url) {
+        $.ajax({
+            url: url,
+            type: "GET",
+            data: {
+                img_src: img_src,
+                img_id: img_id,
+                img_filter: img_filter
+            },
+            success: function(json) {
+                var img_src = json.filtered_img_path;
+                $("#img").attr("src", img_src + "?" + new Date().getTime());
+            },
+            error: function(status) {
+                console.log(status.responseText);
+            }
+        });
+    }
+};
+
 $(document).ready(function() {
     // Triggers sidebar on mobile view
     $(".button-collapse").sideNav();
@@ -187,4 +226,5 @@ $(document).ready(function() {
     uploadForm.init();
     mobileUploadForm.init();
     deleteImage.init();
+    applyFilter.init();
 });

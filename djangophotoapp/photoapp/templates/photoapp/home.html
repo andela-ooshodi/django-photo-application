@@ -117,8 +117,8 @@
             </div>
             <div class="row">
                 <div class="col s12 m12 l9">
-                    <div class="single-view valign-wrapper">
-                       <img id="img" class="responsive-img valign" src=""/>
+                    <div class="single-view">
+                       <img id="img" data-img-src="" data-img-id="" class="responsive-img" src=""/>
                     </div>
                     <div class="controlbtn">
                         <button id="sharebtn" class="waves-effect waves-light btn hoverable"><i class="mdi mdi-facebook left"></i>Share on facebook</button>
@@ -138,16 +138,16 @@
                 <div class="col s12 m12 l3">
                     <div class="filters">
                         <button id="resetbtn" class="waves-effect waves-light btn hoverable">Reset Photo</button>
-                        <button id="noisebtn" class="waves-effect waves-light btn hoverable">Noise</button>
-                        <button id="sepiabtn" class="waves-effect waves-light btn hoverable">Sepia</button>
-                        <button id="contrastbtn" class="waves-effect waves-light btn hoverable">Contrast</button>
-                        <button id="vintagebtn" class="waves-effect waves-light btn hoverable">Vintage</button>
-                        <button id="embossbtn" class="waves-effect waves-light btn hoverable">Emboss</button>
-                        <button id="orangepeelbtn" class="waves-effect waves-light btn hoverable">Orange Peel</button>
-                        <button id="sunrisebtn" class="waves-effect waves-light btn hoverable">Sun Rise</button>
-                        <button id="oldpaperbtn" class="waves-effect waves-light btn hoverable">Old Paper</button>
-                    </div>
-                </div>
+                        <button data-filter="BLUR" id="blurbtn" class="filter waves-effect waves-light btn hoverable">Blur</button>
+                        <button data-filter="CONTOUR" id="contourbtn" class="filter waves-effect waves-light btn hoverable">Contour</button>
+                        <button data-filter="DETAIL" id="detailbtn" class="filter waves-effect waves-light btn hoverable">Detail</button>
+                        <button data-filter="EDGE_ENHANCE" id="edgeenhancebtn" class="filter waves-effect waves-light btn hoverable">Edge Enhance</button>
+                        <button data-filter="EMBOSS" id="embossbtn" class="filter waves-effect waves-light btn hoverable">Emboss</button>
+                        <button data-filter="FIND_EDGES" id="findedgesbtn" class="filter waves-effect waves-light btn hoverable">Find Edges</button>
+                        <button data-filter="SMOOTH" id="smoothbtn" class="filter waves-effect waves-light btn hoverable">Smooth</button>
+                        <button data-filter="SHARPEN" id="sharpenbtn" class="filter waves-effect waves-light btn hoverable">Sharpen</button>
+                    </div
+>                </div>
             </div>
         </div>
     </div>
