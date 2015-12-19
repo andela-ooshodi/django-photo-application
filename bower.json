@@ -1,0 +1,23 @@
+{
+  "name": "myPhotoApp",
+  "description": "Django Powered Photo Editing Application",
+  "version": "1.0.0",
+  "main": "manage.py",
+  "license": "GNU",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:andela-ooshodi/django-photo-application.git"
+  },
+  "dependencies": {
+    "jquery": "~2.1.4",
+    "Materialize": "materialize#~0.97.3",
+    "mdi": "~1.3.41"
+  }
+}

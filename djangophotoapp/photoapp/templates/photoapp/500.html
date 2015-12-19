@@ -1,0 +1,20 @@
+{% extends "photoapp/base.html" %}
+{% load staticfiles %}
+
+{% block title %}Server Error{% endblock %}
+
+{% block body %}
+<div class="custom-error">
+    <div class="container">
+        <div class="row">
+            <div class="col s12">
+                <img id="logo" class="responsive-img" src="{% static 'img/myphotoapp-icon-large.png' %}"/>
+                <h3 class="center-align">Whoops!!!</h3>
+            </div>
+            <div class="col s12">
+                <a href="/home" class="waves-effect waves-light btn hoverable valign error">Click to go back</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock body %}

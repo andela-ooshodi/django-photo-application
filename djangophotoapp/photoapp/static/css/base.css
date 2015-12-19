@@ -1,0 +1,335 @@
+body {
+    background: #e9eaed;
+    background-size: cover;
+    height: 100%;
+    color: #361414;
+}
+
+.custom-error {
+    margin-top: 7%;
+}
+
+.error {
+    background-color: #1992BF;
+    display: block;
+    margin: auto;
+}
+
+.error:hover {
+    background-color: #1992BF;
+}
+
+#error-logo {
+    display: block;
+    margin: auto;
+    opacity: 0.9;
+    text-align: center;
+}
+
+/*-------------------- Login page styling */
+#facebook-button {
+    background-color: #3B5998;
+    height: 100%;
+}
+
+.index-body {
+    background-color: #fff;
+    width: 100%;
+    min-height: 100%;
+    padding: 50px 20px;
+    margin-top: 7%;
+    text-align: center;
+}
+
+#logo {
+    opacity: 0.9;
+}
+
+#title {
+    font-weight: 400;
+    letter-spacing: 1.5px;
+    margin-bottom: 25px;
+}
+
+#description {
+    margin-bottom: 35px;
+    font-weight: 200;
+}
+
+/*-------------------- end of styling */
+
+/*-------------------- home page styling */
+#logo-navbar {
+    margin: 0px 5px;
+}
+
+nav .nav-wrapper {
+    background: #fff;
+    color: #361414;
+    padding-left: 20px;
+}
+
+nav .nav-wrapper i {
+    display: inline-block;
+}
+
+nav .brand-logo {
+    color: #361414;
+}
+
+nav a, nav ul a {
+    color: #361414;
+}
+
+nav ul li {
+    padding: 0px 5px;
+}
+
+.profile-pic {
+    margin-top: 7px;
+}
+
+#logout {
+    padding-left: 0px
+}
+
+.sidebar {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    top: 65px;
+    background-color: #fff;
+    padding: 20px;  
+    overflow-y: auto; 
+    width: 280px;
+    height: 100%;
+}
+
+.content {
+   margin-top: 2%;
+}
+
+#upload-button-lg {
+    background-color: #1992BF;   
+    width: 100%;
+    display: none;
+}
+
+.single-view {
+    background-color: #fff;
+    height: 500px;
+    overflow: auto;
+    margin-top: 10px;
+    margin-left: 20px;
+    padding: 10px;
+}
+
+.single-view #img {
+    display: none;
+    margin: auto;
+}
+
+.filters {
+    margin-top: 10px;
+    max-height: 500px;
+    overflow: auto;
+}
+
+.filters .btn {
+    display: block;
+    margin-bottom: 10px;
+    background-color: #fff;
+    color: #361414;
+}
+
+.filters .btn:hover {
+    background-color: #fff;
+    color: #361414;
+}
+
+#resetbtn, #sharebtn, #downloadbtn {
+    background-color: #1992BF;
+}
+
+#resetbtn:hover, #sharebtn:hover, #downloadbtn:hover {
+    background-color: #1992BF;
+} 
+
+.controlbtn {
+    margin-top: 10px;
+    margin-left: 20px;
+}
+
+#downloadbtn {
+    margin-right: 10px;
+}
+
+#upload-form {
+    margin-bottom: 50px;
+}
+
+.file-field .file-path-wrapper {
+    padding-left: 0px;
+}
+
+.file-input {
+    position: relative;
+    background-color: #1992BF;
+}
+
+.file-field .btn {
+    height: 2.4rem;
+    line-height: 2.4rem;
+}
+
+.file-field .btn:hover {
+    background-color: #1992BF;
+}
+
+/*-------------------- styling file input placeholder */
+input.file-path::-webkit-input-placeholder {
+   color: #ff471a;
+   font-weight: bold;
+}
+input.file-path:-moz-placeholder { /* Firefox 18- */
+   color: #ff471a;
+   font-weight: bold;  
+}
+
+input.file-path::-moz-placeholder {  /* Firefox 19+ */
+   color: #ff471a;
+   font-weight: bold;  
+}
+
+input.file-path:-ms-input-placeholder {  
+   color: #ff471a;
+   font-weight: bold;  
+}
+/*-------------------- end of styling */
+
+.images {
+    position: relative;
+}
+
+.images:hover .edit, .images:hover .delete {
+    display: inline-block;
+}
+
+.images img {
+    display: block;
+    margin: auto;
+}
+
+/*-------------------- Image icons */
+.edit {
+    position: absolute;
+    top: 17px;
+    right: 45px;
+    color: #fff;
+    width: 35px;
+    height: 35px;
+    padding: 0px;
+    background-color: #1992BF;   
+    display: none;
+    transition: all 0.5s ease;
+}
+
+.delete {
+    position: absolute;
+    top: 17px;
+    right: 1px;
+    color: #fff;
+    width: 35px;
+    height: 35px;
+    padding: 0px;
+    background-color: #1992BF;  
+    display: none;
+    transition: all 0.5s ease;
+}
+/*-------------------- end of styling */
+
+/*-------------------- preloader */
+#preloaderupload {
+    display: none;
+    margin: 10px auto;
+}
+
+/*-------------------- mobile view */
+#upload-button-mobile {
+    background-color: #1992BF;
+    height: 2.4rem;
+    line-height: 2.4rem;
+    margin-top: 0px;
+}
+
+.file-input-form-mobile .btn {
+    background-color: #1992BF;
+}
+
+.file-input-mobile {
+    position: relative;
+    background-color: #1992BF;
+    margin-bottom: 10px;
+}
+
+.file-field .btn.file-input-mobile {
+    width: auto;
+}
+
+.file-field .btn {
+    height: 2.4rem;
+    line-height: 2.4rem;
+    width: 100%;
+}
+
+.file-field .btn:hover {
+    background-color: #1992BF;
+}
+
+.preloader-mobile {
+    display : none;
+    margin: auto;
+}
+
+@media (max-width: 992px) {
+    .single-view {
+        margin-left: 10px;
+        margin-bottom: 20px;
+    }
+    
+    .controlbtn {
+        margin-left: 10px;
+    }
+
+    .filters {
+        margin-left: 10px;
+        margin-top: 10px;
+    }
+
+    .filters .btn {
+        display: inline-block;
+        margin-bottom: 10px;
+        margin-right: 10px;
+    }
+}
+
+@media (max-width: 600px) {
+    #upload-button-mobile {
+        display: block;
+        margin: auto;
+        margin-bottom: 10px;
+        width: 100%;
+    }
+
+    .file-input-mobile {
+        display: block;
+        margin: auto;
+        margin-bottom: 10px;
+        width: 100%;
+    }
+
+    .preloader-mobile {
+        display: none;
+        margin: 100px auto 10px auto;
+    }
+}
