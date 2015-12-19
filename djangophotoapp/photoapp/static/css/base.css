@@ -147,17 +147,21 @@ nav ul li {
     color: #361414;
 }
 
-#resetbtn, #sharebtn {
+#resetbtn, #sharebtn, #downloadbtn {
     background-color: #1992BF;
 }
 
-#resetbtn:hover, #sharebtn:hover {
+#resetbtn:hover, #sharebtn:hover, #downloadbtn:hover {
     background-color: #1992BF;
 } 
 
 .controlbtn {
     margin-top: 10px;
     margin-left: 20px;
+}
+
+#downloadbtn {
+    margin-right: 10px;
 }
 
 #upload-form {
@@ -248,12 +252,6 @@ input.file-path:-ms-input-placeholder {
 #preloaderupload {
     display: none;
     margin: 10px auto;
-}
-
-#preloadershare {
-    display: none;
-    margin: 0px 0px 0px 20px;
-    position: absolute;
 }
 
 /*-------------------- mobile view */

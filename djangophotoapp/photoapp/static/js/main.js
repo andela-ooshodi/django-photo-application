@@ -46,10 +46,15 @@ var eventListeners = {
             var current_img = $("#img").attr("data-img-src");
             $("#img").attr("src", current_img);
         });
-        // Share image
+        // Share Image
         $("#sharebtn").on("click", function() {
-            facebook.share;
-            $("#preloadershare").css("display", "none");
+            var img_src = $("#img").attr("src")
+            facebook.share(img_src);
+        });
+        // Download Image
+        $("#downloadbtn").on("click", function() {
+            var img_src = $("#img").attr("src");
+            $(this).attr("href", img_src);
         });
     }
 };
@@ -64,12 +69,12 @@ var facebook = {
             });
         });
     },
-    share: function() {
+    share: function(img_src) {
         FB.ui({
             method: "feed",
-            link: location.href,
+            link: window.location.href,
             caption: "myPhotoApp",
-            picture: json.url,
+            picture: img_src,
             description: "I just used myPhotoApp to edit this photo and I love it."
         }, function(response) {});
     }
