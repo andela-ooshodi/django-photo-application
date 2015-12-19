@@ -1,0 +1,32 @@
+language: python
+python:
+- '2.7'
+env:
+- DJANGO_SETTINGS_MODULE=djangophotoapp.settings.test
+install:
+- pip install --upgrade pip
+- pip install --upgrade virtualenv
+- pip install -r requirements.txt
+- pip install coveralls
+- npm install bower
+script:
+- bower install --settings=djangophotoapp.settings.test
+- python djangophotoapp/manage.py collectstatic --noinput --settings=djangophotoapp.settings.test
+- coverage run --source=photoapp djangophotoapp/manage.py test
+after_success:
+- coveralls
+deploy:
+  provider: heroku
+  buildpack:
+  - node
+  - python
+  api_key:
+    secure: efHQyw+KSdFv38xatzIef6lkVCZmVkSh1ZwnG8TzhgRwXWbjgIddaFq7gc6uFfkahTU65cjkHWU5S3694nS25Cn/iZinqU5qIWojp4QsoThIJgxKyHOHEGMlDzZOSiOY2DgZgNjUlrS0owhEKAkoJTO2faOKXaWOO1tXzlnIqS1nwRlMDJxzQ/6mtRm9xHpOz6KLsL6+/I4wbTo6GeRFxMyWVxTQ5mQvac/WsHrxhz2B/WYjv2pZKH0Xv+KvJB3Z/l94dy1X/+z616qgsIsrLpRG3ZHjLUtrCIZH4iB3OcEsm6GI24NWpfP6jEp5iKWq4p2iPVqtC/oVMhEgLMvNXHUwr8dx8rLuAkP6OjW0XY1gIpP7DxfRTAZcxgfRQSggWGQ2lnCaBRDnj8kUz7rwZMg+Uew/4vVom2NBRY3WxVWU130GrPBoF9lpZsiu4TCg1IjC1OAQDCYXz06GdbJKFz0/mfInRL/GCq6GmbAOz/Nu4I9wvxisddXLB7C/1S3oflV1GaSOpHukVKryFkg17m+Ra8ErEtIk3IBrR8TERxAyYCaK/aem+Z48NkqurF1+R+QtBBUE+Xt7QgfXqGQtdizf3sdsNakVetZ49JtOSxrN2OFHcNjPqh+/gdgrGojDmgJIycWAH/dUtgrTpj6GOk2zUuEVDqeHQcw1nKfMOSs=
+  app: myphotoapp-staging
+  on:
+    repo: andela-ooshodi/django-photo-application
+  run:
+  - export DJANGO_SETTINGS_MODULE=djangophotoapp.settings.production
+  - python djangophotoapp/manage.py collectstatic --noinput
+  - python djangophotoapp/manage.py makemigrations
+  - python djangophotoapp/manage.py migrate
