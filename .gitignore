@@ -60,3 +60,6 @@ djangophotoapp/djangophotoapp/settings/development.py
 
 # Environment Variables
 .env.yml
+
+# miscellaneous
+desktop.ini
