@@ -17,6 +17,9 @@ after_success:
 - coveralls
 deploy:
   provider: heroku
+  buildpack:
+    - node
+    - python
   api_key:
     secure: fpgSq5nAXWfUqBmNoGrxetmoE4a1V9oGWBZymZk7kTM/O0bDlull3BkpYivTQF5KvBhs/Y9BNpoWOCDAw9TzuMVmdPwtMXJ0Xyrrj9ENaAdv24Sx2GMOiVVhYR6qfj51V2JBLYbSqHEv05o8T5Vd8dYgcV+E73zQskMXTwt9GNrpJZqyHvuDhK7LhcUUTmPvScYoGB1KXKLTJTklkkRc46IUn/rOhJMCqiZYLMLRQ8+RDocz66PClMmS0FJ/1ftY3ZrSjQd4Is7KmnrcDjANQWFCK6dJCK7LZyMAgD+p9TPffjo+hBbE+alNzvr9fk9tKoICTiC0LDP7OdB9ywVxsZdwpBth22OGzUPi9iPLJOl26529A+32faSqQYcLB7vvGcHPrh3B8RFQHTV7hvRrOR8TcfzWW61+Dq2VIDX3RldhO14F1QmhApK/30rBRfGhc3n1xOEk6VmvZ0W61HrdeDc0TtyNkajuCCQ44o3kt2HIl2czZvsOWKcQn7tYid8eCp0fDfqgEgVtTkyUfIR6yAuGp7yH2/E29dNsJjY/F8gh6/7HNMOctkug59Mtqf3OtYhtqTRFX2ZZFfeUYRe2O0pwYljN9JLi7ni+z2WKr5nfFGEp4Y5DstQAj0N/FHi9jXk/xEeb4eTl+O7zSVb2zNoUnht5fuGU+fYZ5zSyoig=
   app: myphotoapp-staging
