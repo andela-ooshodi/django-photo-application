@@ -1,1 +1,1 @@
-web: gunicorn djangophotoapp.wsgi --pythonpath=djangophotoapp--log-file -
+web: gunicorn djangophotoapp.wsgi --pythonpath=djangophotoapp --log-file=-
