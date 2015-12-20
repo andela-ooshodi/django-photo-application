@@ -17,16 +17,13 @@ after_success:
 - coveralls
 deploy:
   provider: heroku
-  buildpack:
-    - node
-    - python
   api_key:
-    secure: NqhyImUKqxHq8zMvPjbJKEBTDJN3QzrmyLFnYIdE90sAML1C6NdpyA139ZtgEWWLksoVtWfZhy7r736F95F1iir8MIFuRoUdZ/s4RHxY0iZXLe0HUlt3HULv2tIKk5CifS10jIh7jTk/f68YzA+t4rGcS4T4I759z0ja14D20LGGV8fj/HKiFaiY5mBrNZd6TvDPyfvQ2fBtjcXFnkEkCdikzK9rn4+eqIToLxHXUGSZXEyvjykwqATveGcnkZITXHgrBM9dLkBHfwxC6f78Vlq+gr2GPHaXRp4Lw+VhWfzjKyszL8CQ0SN+D40F30HsJc3VwlNTgzhxgH6oXfQpDbWV6ttYu/Nl3joF0bzznXnh33hUvB+vOVHtw0fXN3vr60snQPu202SqDPoJpYkqu84Fya14hr0s5xj/ZoD8iNqbWlpGb5gq5hJnZ2lT0/wzYsVk2IABcfUftciJvIguKn57al33/Ou/XBQ1wnwNvW7y+mXNsmg4vspb9dONZiTRqz8xoVaz3bNIQKKQ7BDZ8o7YltzB9AazXgufK/Nj7wg4dlJGCpx400diDAJS5KgfsRt1XFo1gCyIrZ94vNC071QrPQu1hXPNq3jUXyVC4FNyPOi+92Nyrra2sTfwM2j4drJ2kiYpKECNFaZ7wKgfZbm+SReheZPVv85Ly19HC+k=
+    secure: fpgSq5nAXWfUqBmNoGrxetmoE4a1V9oGWBZymZk7kTM/O0bDlull3BkpYivTQF5KvBhs/Y9BNpoWOCDAw9TzuMVmdPwtMXJ0Xyrrj9ENaAdv24Sx2GMOiVVhYR6qfj51V2JBLYbSqHEv05o8T5Vd8dYgcV+E73zQskMXTwt9GNrpJZqyHvuDhK7LhcUUTmPvScYoGB1KXKLTJTklkkRc46IUn/rOhJMCqiZYLMLRQ8+RDocz66PClMmS0FJ/1ftY3ZrSjQd4Is7KmnrcDjANQWFCK6dJCK7LZyMAgD+p9TPffjo+hBbE+alNzvr9fk9tKoICTiC0LDP7OdB9ywVxsZdwpBth22OGzUPi9iPLJOl26529A+32faSqQYcLB7vvGcHPrh3B8RFQHTV7hvRrOR8TcfzWW61+Dq2VIDX3RldhO14F1QmhApK/30rBRfGhc3n1xOEk6VmvZ0W61HrdeDc0TtyNkajuCCQ44o3kt2HIl2czZvsOWKcQn7tYid8eCp0fDfqgEgVtTkyUfIR6yAuGp7yH2/E29dNsJjY/F8gh6/7HNMOctkug59Mtqf3OtYhtqTRFX2ZZFfeUYRe2O0pwYljN9JLi7ni+z2WKr5nfFGEp4Y5DstQAj0N/FHi9jXk/xEeb4eTl+O7zSVb2zNoUnht5fuGU+fYZ5zSyoig=
   app: myphotoapp-staging
   on:
     repo: andela-ooshodi/django-photo-application
   run:
-  - export DJANGO_SETTINGS_MODULE=djangophotoapp.settings.production
-  - python djangophotoapp/manage.py collectstatic --noinput
-  - python djangophotoapp/manage.py makemigrations
-  - python djangophotoapp/manage.py migrate
+    - export DJANGO_SETTINGS_MODULE=djangophotoapp.settings.production
+    - python djangophotoapp/manage.py collectstatic --noinput
+    - python djangophotoapp/manage.py makemigrations
+    - python djangophotoapp/manage.py migrate
