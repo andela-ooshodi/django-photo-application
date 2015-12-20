@@ -16,14 +16,14 @@ class AuthenticationTestClass(TestCase):
         self.profile.save
 
     def test_can_reach_login_page(self):
-        response = self.client.get('/login')
+        response = self.client.get('/')
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.templates[0].name, 'photoapp/login.html')
 
     def test_confirm_logged_in(self):
         login = self.client.login(username='test', password='tester')
         self.assertTrue(login)
-        response = self.client.get('/login')
+        response = self.client.get('/')
         # redirects a logged in user
         self.assertEqual(response.status_code, 302)
 

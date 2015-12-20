@@ -25,7 +25,7 @@ class LoginView(TemplateView):
 class LoginRequiredMixin(object):
     # View mixin which requires that the user is authenticated.
 
-    @method_decorator(login_required(login_url='/login'))
+    @method_decorator(login_required(login_url='/'))
     def dispatch(self, request, *args, **kwargs):
         return super(LoginRequiredMixin, self).dispatch(
             request, *args, **kwargs)
