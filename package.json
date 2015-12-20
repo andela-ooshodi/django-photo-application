@@ -1,6 +1,6 @@
 {
-    "name": "myphotoapp-app",
-    "description": "myphotoapp-app",
+    "name": "myphotoapplication",
+    "description": "myphotoapplication",
     "version": "1.0.0",
     "engines": {
         "npm": "2.1.x"
