@@ -48,4 +48,4 @@ SECRET_KEY:
 
 ## myPhotoApp
 Need to see the app for yourself?
-[myPhotoApp](http://myphotoapp-staging.herokuapp.com)
+[myPhotoApp](http://myphotoapp-app.herokuapp.com)
