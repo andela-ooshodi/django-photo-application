@@ -22,7 +22,7 @@ deploy:
     - python
   api_key:
     secure: Yh+uSFq4RAbxMbKMOP8bWSRx35B9ky2BYcQSyyyByCbvYIG8r2lpPqVfvC03Rqxkl+hPWY2OgzAMcnzkDwczzKbPvyzbTHeZuVyznLHh8TKW1tnUrBQB4CYwtUmas8lSVm1EZnLk4dR37sFj6/466HRiCIzUs6tOFOwBX5LpM7vM9biTiXP41pGC4/Y7OP+qcFb7Z0GU4+xb79iRjSW5m9k77Jl4Yw+B4uWrkYwitCNxytEMS7silX/WfxukDxtrStxZSAFEC6Bkw6iG+5Zql104PSnSy+ADY3yOSfK6n6R0nea8D2L2bQ+zno4JwNAgElWbI86p66Ok5fZ5wiDPlGzlCS2bpXxyY4UhPmt5Cm+ouUpATVByh7FkGCT6Hs8myeKe8ohrDGCbt+lGdlWK4YotlwuKRKfANNWJDMDGAXrAMbsNHAphXjdu+bUaHahE5f5IJ4XahvDCD7sD2B4XQEpTfS5ZA8sWw/RNYWvSFtHoTwYFdfZIzCLNklDk8V2pHnVr6j8fgjBwLa7wzGtwOg+lpwuinGL1Qqo8z0UnRcBgrYo5I0ngkRjNLfYk46aZuiM1YdW0imFloWoaFy9XpGR3zAN0GESXGEJsLsb9CLCwa79+8q8XCGAUzQnFor8G8WO8X6TQPP8jeNLuaO7THfwxN/HL3qg/kV/mf33Gg8g=
-  app: myphotoapp-staging
+  app: myphotoapp-app
   on:
     repo: andela-ooshodi/django-photo-application
   run:
