@@ -14,8 +14,6 @@ test:
     - python djangophotoapp/manage.py collectstatic --noinput --settings=djangophotoapp.settings.test
     - python djangophotoapp/manage.py test djangophotoapp --settings=djangophotoapp.settings.test
     - coverage run --source=photoapp djangophotoapp/manage.py test
-  post:
-    - coveralls
 deployment:
   staging:
     branch: master
