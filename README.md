@@ -1,4 +1,4 @@
-# Django Powered Photo Editor [![Build Status](https://travis-ci.org/andela-ooshodi/django-photo-application.svg)](https://travis-ci.org/andela-ooshodi/django-photo-application) [![Coverage Status](https://coveralls.io/repos/andela-ooshodi/django-photo-application/badge.svg?branch=master&service=github)](https://coveralls.io/github/andela-ooshodi/django-photo-application?branch=master)
+# Django Powered Photo Editor [![Circle CI](https://circleci.com/gh/andela-ooshodi/django-photo-application.svg?style=svg)](https://circleci.com/gh/andela-ooshodi/django-photo-application) [![Coverage Status](https://coveralls.io/repos/andela-ooshodi/django-photo-application/badge.svg?branch=master&service=github)](https://coveralls.io/github/andela-ooshodi/django-photo-application?branch=master)
 
 ### Challenge
 Build an image editing app powered by Django
