@@ -7,13 +7,17 @@ dependencies:
   pre:
     - pip install --upgrade pip
     - pip install --upgrade virtualenv
+    - pip install -r requirements.txt
+    - pip install coveralls
     - npm install bower
 test:
   override:
     - bower install --settings=djangophotoapp.settings.test
     - python djangophotoapp/manage.py collectstatic --noinput --settings=djangophotoapp.settings.test
     - python djangophotoapp/manage.py test djangophotoapp --settings=djangophotoapp.settings.test
-    - coverage run --source=photoapp djangophotoapp/manage.py test
+    - coverage run --source=photoapp -m nose2.__main__-v
+  post:
+    - coveralls
 deployment:
   staging:
     branch: master
