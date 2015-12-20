@@ -26,8 +26,5 @@ deploy:
   app: myphotoapplication
   on:
     repo: andela-ooshodi/django-photo-application
-  run:
-    - python djangophotoapp/manage.py collectstatic --noinput
-    - python djangophotoapp/manage.py migrate
 after_deploy:
   - "heroku ps:scale web=1 --app myphotoapplication"
