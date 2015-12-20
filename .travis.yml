@@ -17,16 +17,8 @@ after_success:
 - coveralls
 deploy:
   provider: heroku
-  buildpack:
-    - node
-    - python
   api_key:
-    secure: rfPAZV4se0u4dHofrxod1cC8svllXnrdsWHu4+CrhI19dV8EJ4vFVJ8/LlNWtcoHMy5aBTfVM0+iqUvRxagrlp+vtT7dhL1EddXErFeYTvxWtvKPa5wBTXhSip9h9IRlMf4gNQ1wCpAagDQPXZgX0fnleOfY/qDnqk9H3/H+W4CqKUnQD+nJkm3F8dV8v1SchWm6OJJCEU86G0TB/SeFXKhH89CZ6Pt5YVpQrredz9KpVTWCDjhexIP3O0CjmNwfvi6KFGifE8tfTJ3OMYdX8ruhlf7NOgISFzI8BkpOK/exs1jMDWxQnQBGG6HnnfX3qdaKhNUKpas8ep+lmwJEQ2olWM0Kj3+lMm9wr2ggbYlHib+d82J6s0RL8JzkwR6Brg0FCz8W64+aNBJc/Za2W4hAh0I2lKPrjQ0vn+SemsFsLGwtXenIL402nAzQlG+rL0EvAvHmt/aHAOsJiyIaBtt3klMrp/deRWZxZiLJ/VeCRXRTxMgwFvpuGZURYjPww2iw0ay2ZVSsHF2fdyrdYbd9q9vO464PzQ1tRSSFr0ja0LHPEMCfJcc1IF3XoH+rzCYVN3RlB9Z2Z6hp2h8QVkfDJrzHL7GzWevLPcOiIQaM3mlKA75CeiC2UcahbB8yp/IvpFz/6uP1skw4+fe6tx8Em3clKOWaaULshKaa2wA=
+    secure: r1I1/5j2yISohaa5Xf7N4I/uv24VCkuniUh0u/mI/4XQtvvPtWKs1RJRlpRn5psWwnB52Yr+b5QVU0z+J/1u0JKO/jMW6PrewQ7RoBiwdWCg/bYBoq1Yd/2ycykY2VN+cPLNJHERMJ+n7abzBpUmWb/f6qDnrFzrDUWDZfflNl/XJLy3GFeLcuFEvQOMJCU0lpCWzAqVL/vrkkuRTuuKTIPL+xRKxreRJEd6PreN+o2qYLM22XMQRZFd5xsi1CIV9RmTC78wUNIGKZ15ruIlfJoEZt/RvGVIyYHAxWawsasRn/w7lVOlbWPlBslmWO8CwxM6g1fD015ULbqS9RyxBlJSk1Hcn+TE94yUKXF3PlJ1TyUrawomMa1CeXq8uEjM3G973hTVlbYl1E2Jdyi2pf0v4NqwT8IHmhj5cEZ6LURvEBXCzYPhWeXmMp1yAPWViryuYuSFj/q05DiSWKKEWYIbbOIn5SQz+MSe24xrJFIE4nzGIC4mPDyFpfwwFNVt8lmLiLicVX5UzFm0RiPoMSjkW99Pd4PEmY2Zn6YWQ3pnsS1eBuqsSOuegnowkBmM59t6oUeKAfY4GHrll4E21nMRJDX6NHUzsCQrsXr2WjSoXAZnBnN0eCG1sYMVbMAstnrOWbGLe5sxSTaQILp+sFbQaEDCxa15E60+swZ9xNE=
   app: myphotoapplication
   on:
     repo: andela-ooshodi/django-photo-application
-  run:
-    - export DJANGO_SETTINGS_MODULE=djangophotoapp.settings.production
-    - python djangophotoapp/manage.py collectstatic --noinput
-    - python djangophotoapp/manage.py makemigrations
-    - python djangophotoapp/manage.py migrate
