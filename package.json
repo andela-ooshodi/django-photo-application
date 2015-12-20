@@ -1,6 +1,6 @@
 {
-    "name": "myphotoapp-staging",
-    "description": "myphotoapp-staging",
+    "name": "myphotoapp-app",
+    "description": "myphotoapp-app",
     "version": "1.0.0",
     "engines": {
         "npm": "2.1.x"
