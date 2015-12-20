@@ -74,7 +74,7 @@ var facebook = {
             method: "feed",
             link: window.location.href,
             caption: "myPhotoApp",
-            picture: img_src,
+            picture: "http://" + location.host + img_src,
             description: "I just used myPhotoApp to edit this photo and I love it."
         }, function(response) {});
     }
