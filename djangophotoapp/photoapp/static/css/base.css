@@ -246,6 +246,7 @@ input.file-path:-ms-input-placeholder {
     text-transform: uppercase;
     color: #ff471a;
     padding-top: 10px;
+    font-weight: bold;
 }
 
 .images {
