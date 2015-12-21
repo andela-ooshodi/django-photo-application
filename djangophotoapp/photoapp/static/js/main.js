@@ -184,6 +184,12 @@ var deleteImage = {
                 image_id: image_id
             },
             success: function(json) {
+                var img_id = $("#img").attr("data-img-id");
+                if (img_id == json.image_id) {
+                    $("#img").hide();
+                    $("#placeholdertext").show();
+                    $(".single-view").css("height", "500px");
+                }
                 Materialize.toast("Delete Successful!", 4000);
                 $(".uploaded-images").load(document.URL + " .uploaded-images", activate_modal)
             }

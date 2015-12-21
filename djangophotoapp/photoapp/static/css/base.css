@@ -109,6 +109,10 @@ nav ul li {
    margin-top: 2%;
 }
 
+.content .row {
+    margin-bottom: 0px;
+}
+
 #upload-button-lg {
     background-color: #1992BF;   
     width: 100%;
@@ -237,6 +241,8 @@ input.file-path:-ms-input-placeholder {
 
 .image-title {
     text-transform: uppercase;
+    color: #ff471a;
+    padding-top: 10px;
 }
 
 .images {

@@ -86,22 +86,26 @@ class HomeView(LoginRequiredMixin, TemplateView):
         image = Images.objects.get(pk=image_id)
         image_path = image.image.path
 
-        # delete from database
+        # split the image part
+        filepath, ext = os.path.splitext(image_path)
+        # create the filtered image path
+        new_filepath = filepath + "filtered" + ext
+
+        # delete image from database
         image.delete()
 
         # delete from file directory
         if os.path.exists(image_path):
-            # split the image part
-            filepath, ext = os.path.splitext(image_path)
-            # create the filtered image path
-            new_filepath = filepath + "filtered" + ext
             # delete image
             os.remove(image_path)
+
+        if os.path.exists(new_filepath):
             # delete filtered image
             os.remove(new_filepath)
 
+        # return the id of the image to remove the image from center div
         return HttpResponse(
-            json.dumps({'msg': 'success'}),
+            json.dumps({'image_id': image_id}),
             content_type='application/json'
         )
 
