@@ -33,6 +33,7 @@ var eventListeners = {
         });
         // Focus the image to the center of page
         $("body").on("click", ".edit", function() {
+            $('#placeholdertext').hide();
             var img_id = $(this).attr("id").split("-")[1];
             var img_src = $("#img-" + img_id).attr("src")
             $("#img").attr("src", img_src);
