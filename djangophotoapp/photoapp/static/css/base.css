@@ -116,6 +116,7 @@ nav ul li {
 }
 
 .single-view {
+    position: relative;
     background-color: #fff;
     height: 500px;
     overflow: auto;
@@ -124,9 +125,24 @@ nav ul li {
     padding: 10px;
 }
 
+.single-view #preloaderfilter {
+    position: absolute;
+    top: 50%;
+    display: none;
+    z-index: 2;
+}
+
 .single-view #img {
     display: none;
     margin: auto;
+}
+
+.progress {
+    background-color: #fff;
+}
+
+.progress .indeterminate {
+    background-color: #ff471a;
 }
 
 .filters {

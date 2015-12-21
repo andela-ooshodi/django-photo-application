@@ -202,6 +202,7 @@ var applyFilter = {
         });
     },
     filter: function(img_src, img_id, img_filter, url) {
+        $("#preloaderfilter").show();
         $.ajax({
             url: url,
             type: "GET",
@@ -211,6 +212,7 @@ var applyFilter = {
                 img_filter: img_filter
             },
             success: function(json) {
+                $("#preloaderfilter").hide();
                 var img_src = json.filtered_img_path;
                 $("#img").attr("src", img_src + "?" + new Date().getTime());
             },
