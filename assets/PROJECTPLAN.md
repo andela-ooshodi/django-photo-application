@@ -1,4 +1,4 @@
-Project Plan for **Django Powered Photo Editing Application**
+### Project Plan for **Django Powered Photo Editing Application**
 
 Project Title
 **myPhotoApp**
