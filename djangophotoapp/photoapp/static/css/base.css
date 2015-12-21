@@ -332,4 +332,14 @@ input.file-path:-ms-input-placeholder {
         display: none;
         margin: 100px auto 10px auto;
     }
+
+    .file-field .btn.file-input-mobile {
+        width: 100%;
+    }
+}
+
+@media (max-width: 492px) {
+    #downloadbtn {
+        margin-bottom: 10px;
+    }
 }
