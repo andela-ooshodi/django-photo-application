@@ -31,12 +31,13 @@
                 <input id="img-file-path" class="file-path validate" type="text" placeholder="Please select your image" readonly>
             </div>
             <div class="btn hoverable file-input">
-                <span>Select your Image</span>
+                <span>Click here</span>
                 <input id="img-file" name="image" type="file" accept="image/*">
             </div>      
         </div>
         <button type="submit" id="upload-button-lg" class="waves-effect waves-light btn card-panel hoverable"><i class="mdi mdi-upload left"></i>Upload Image</button>
     </form>
+    <div class="image-title center-align">Uploaded Images</div>
     <div class="divider"></div>
     <div id="preloaderupload" class="preloader-wrapper active">
         <div class="spinner-layer spinner-red-only">
@@ -54,9 +55,8 @@
     <div class="uploaded-images">
     {% for image in images %}
     <div id="section-{{ image.id }}" class="section images">
-        <img id="img-{{ image.id }}" class="responsive-img" src="{{ image.image.url }}"/>
+        <a id="edit-{{ image.id }}" class="edit"> <img id="img-{{ image.id }}" class="responsive-img" src="{{ image.image.url }}"/></a>
         <a href="#delete-{{ image.id }}" class="delete btn modal-trigger hoverable right"><i class="mdi mdi-delete"></i></a>
-        <a id="edit-{{ image.id }}" class="edit btn hoverable right"><i class="mdi mdi-pencil"></i></a>
         <!-- Confirm Delete Modal -->
         <div id="delete-{{ image.id }}" class="modal">
             <div class="modal-content">
@@ -93,7 +93,7 @@
                                         <input id="img-file-path" class="file-path validate" type="text" placeholder="Please select your image" readonly>
                                     </div> 
                                     <div class="btn hoverable file-input-mobile">
-                                        <span>Select your Image</span>
+                                        <span>Click here</span>
                                         <input id="img-file" name="image" type="file" accept="image/*">
                                     </div>    
                                 </div>
@@ -118,6 +118,10 @@
             <div class="row">
                 <div class="col s12 m12 l9">
                     <div class="single-view">
+                        <div id="preloaderfilter" class="progress">
+                           <div class="indeterminate"></div>
+                       </div>
+                       <div id="placeholdertext" class="center-align card-panel">Empty, please click on a photo to edit</div>
                        <img id="img" data-img-src="" data-img-id="" class="responsive-img" src=""/>
                     </div>
                     <div class="controlbtn">

@@ -109,6 +109,10 @@ nav ul li {
    margin-top: 2%;
 }
 
+.content .row {
+    margin-bottom: 0px;
+}
+
 #upload-button-lg {
     background-color: #1992BF;   
     width: 100%;
@@ -116,6 +120,7 @@ nav ul li {
 }
 
 .single-view {
+    position: relative;
     background-color: #fff;
     height: 500px;
     overflow: auto;
@@ -124,9 +129,32 @@ nav ul li {
     padding: 10px;
 }
 
+.single-view #preloaderfilter {
+    position: absolute;
+    top: 50%;
+    display: none;
+    z-index: 2;
+}
+
 .single-view #img {
     display: none;
     margin: auto;
+}
+
+.single-view .responsive-img {
+    height: 100%;
+}
+
+.progress {
+    background-color: #fff;
+}
+
+.progress .indeterminate {
+    background-color: #ff471a;
+}
+
+#placeholdertext {
+    margin-top: 35%;
 }
 
 .filters {
@@ -190,28 +218,42 @@ nav ul li {
 input.file-path::-webkit-input-placeholder {
    color: #ff471a;
    font-weight: bold;
+   text-align: center;
+   text-transform: uppercase;
 }
 input.file-path:-moz-placeholder { /* Firefox 18- */
    color: #ff471a;
    font-weight: bold;  
+   text-align: center;
+   text-transform: uppercase;
 }
 
 input.file-path::-moz-placeholder {  /* Firefox 19+ */
    color: #ff471a;
    font-weight: bold;  
+   text-align: center;
+   text-transform: uppercase;
 }
 
 input.file-path:-ms-input-placeholder {  
    color: #ff471a;
-   font-weight: bold;  
+   font-weight: bold;
+   text-align: center;
+   text-transform: uppercase;  
 }
 /*-------------------- end of styling */
+
+.image-title {
+    text-transform: uppercase;
+    color: #ff471a;
+    padding-top: 10px;
+}
 
 .images {
     position: relative;
 }
 
-.images:hover .edit, .images:hover .delete {
+.images:hover .delete {
     display: inline-block;
 }
 
@@ -220,20 +262,11 @@ input.file-path:-ms-input-placeholder {
     margin: auto;
 }
 
-/*-------------------- Image icons */
-.edit {
-    position: absolute;
-    top: 17px;
-    right: 45px;
-    color: #fff;
-    width: 35px;
-    height: 35px;
-    padding: 0px;
-    background-color: #1992BF;   
-    display: none;
-    transition: all 0.5s ease;
+.edit:hover {
+    cursor: pointer;
 }
 
+/*-------------------- Image icons */
 .delete {
     position: absolute;
     top: 17px;

@@ -33,13 +33,13 @@ var eventListeners = {
         });
         // Focus the image to the center of page
         $("body").on("click", ".edit", function() {
+            $('#placeholdertext').hide();
             var img_id = $(this).attr("id").split("-")[1];
             var img_src = $("#img-" + img_id).attr("src")
             $("#img").attr("src", img_src);
             $("#img").attr("data-img-src", img_src);
             $("#img").attr("data-img-id", img_id);
             $("#img").css("display", "block");
-            $(".single-view").css({"height": "auto", "max-height": "500px"});
         });
         // Reset the canvas with the current image
         $("#resetbtn").on("click", function(e) {
@@ -153,7 +153,6 @@ var mobileUploadForm = {
                 $("#img").attr("data-img-src", img_src);
                 $("#img").attr("data-img-id", img_id);
                 $("#img").css("display", "block");
-                $(".single-view").css({"height": "auto", "max-height": "500px"});
                 empty_file_input();
                 Materialize.toast("Upload Successful!", 4000);
             },
@@ -183,8 +182,13 @@ var deleteImage = {
                 image_id: image_id
             },
             success: function(json) {
+                var img_id = $("#img").attr("data-img-id");
+                if (img_id == json.image_id) {
+                    $("#img").hide();
+                    $("#placeholdertext").show();
+                }
                 Materialize.toast("Delete Successful!", 4000);
-                $(".uploaded-images").load(document.URL + " .uploaded-images", activate_modal)
+                $(".uploaded-images").load(document.URL + " .uploaded-images", activate_modal);
             }
         });
     }
@@ -202,6 +206,7 @@ var applyFilter = {
         });
     },
     filter: function(img_src, img_id, img_filter, url) {
+        $("#preloaderfilter").show();
         $.ajax({
             url: url,
             type: "GET",
@@ -211,6 +216,7 @@ var applyFilter = {
                 img_filter: img_filter
             },
             success: function(json) {
+                $("#preloaderfilter").hide();
                 var img_src = json.filtered_img_path;
                 $("#img").attr("src", img_src + "?" + new Date().getTime());
             },

@@ -15,22 +15,7 @@ class ApplyFilter:
         self.imagesrc = imagesrc
 
         # get the ImageFilter method based of "imagefilter" string
-        if imagefilter == "BLUR":
-            self.imgfilter = ImageFilter.BLUR
-        if imagefilter == "CONTOUR":
-            self.imgfilter = ImageFilter.CONTOUR
-        if imagefilter == "DETAIL":
-            self.imgfilter = ImageFilter.DETAIL
-        if imagefilter == "EDGE_ENHANCE":
-            self.imgfilter = ImageFilter.EDGE_ENHANCE
-        if imagefilter == "EMBOSS":
-            self.imgfilter = ImageFilter.EMBOSS
-        if imagefilter == "FIND_EDGES":
-            self.imgfilter = ImageFilter.FIND_EDGES
-        if imagefilter == "SMOOTH":
-            self.imgfilter = ImageFilter.SMOOTH
-        if imagefilter == "SHARPEN":
-            self.imgfilter = ImageFilter.SHARPEN
+        self.imgfilter = getattr(ImageFilter, imagefilter)
 
     def apply_filter(self):
 
