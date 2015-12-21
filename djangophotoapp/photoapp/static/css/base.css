@@ -141,6 +141,10 @@ nav ul li {
     margin: auto;
 }
 
+.single-view .responsive-img {
+    height: 100%;
+}
+
 .progress {
     background-color: #fff;
 }

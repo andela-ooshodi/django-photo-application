@@ -40,7 +40,6 @@ var eventListeners = {
             $("#img").attr("data-img-src", img_src);
             $("#img").attr("data-img-id", img_id);
             $("#img").css("display", "block");
-            $(".single-view").css({"height": "auto", "max-height": "500px"});
         });
         // Reset the canvas with the current image
         $("#resetbtn").on("click", function(e) {
@@ -154,7 +153,6 @@ var mobileUploadForm = {
                 $("#img").attr("data-img-src", img_src);
                 $("#img").attr("data-img-id", img_id);
                 $("#img").css("display", "block");
-                $(".single-view").css({"height": "auto", "max-height": "500px"});
                 empty_file_input();
                 Materialize.toast("Upload Successful!", 4000);
             },
@@ -188,10 +186,9 @@ var deleteImage = {
                 if (img_id == json.image_id) {
                     $("#img").hide();
                     $("#placeholdertext").show();
-                    $(".single-view").css("height", "500px");
                 }
                 Materialize.toast("Delete Successful!", 4000);
-                $(".uploaded-images").load(document.URL + " .uploaded-images", activate_modal)
+                $(".uploaded-images").load(document.URL + " .uploaded-images", activate_modal);
             }
         });
     }
