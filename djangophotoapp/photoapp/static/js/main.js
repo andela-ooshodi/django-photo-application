@@ -146,7 +146,7 @@ var mobileUploadForm = {
             // On success
             success: function(json) {
                 // Display the image in the center after upload
-                $("placeholdertext").hide();
+                $("#placeholdertext").hide();
                 $(".preloader-mobile").css("display", "none");
                 var img_src = json.newest_image_src;
                 var img_id = json.newest_image_id
