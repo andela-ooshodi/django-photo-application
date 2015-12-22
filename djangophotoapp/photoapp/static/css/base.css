@@ -13,6 +13,7 @@ body {
     background-color: #1992BF;
     display: block;
     margin: auto;
+    width: auto;
 }
 
 .error:hover {
