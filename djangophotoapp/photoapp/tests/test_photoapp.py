@@ -4,7 +4,7 @@ import os
 from django.core.files import File
 from django.test import TestCase, RequestFactory
 from django.contrib.auth.models import User
-from photoapp.models import UserProfile, Images
+from photoapp.models import UserProfile, Images, delete_from_file_system
 from photoapp.views import HomeView, FilterView
 from photoapp.forms import ImageForm
 from PIL import Image
@@ -62,6 +62,23 @@ class PhotoAppTestClass(TestCase):
         self.assertTrue(Images.objects.get)
 
         # assert that delete method to remove file from file system was called
+        self.assertTrue(os.remove)
+
+    @mock.patch.object(Images, "save")
+    @mock.patch("os.path.exists", return_value=True)
+    @mock.patch("os.remove")
+    def test_delete_from_file_system(self, mock_save, mock_path, mock_remove):
+        # create a new image model instance
+        image = Images(
+            owner=self.user, image=self.file_mock,
+            image_file_name="test_image")
+        image.save()
+
+        # delete image from file system
+        delete_from_file_system(Images, image)
+
+        # test that method to delete from file system where called
+        self.assertTrue(os.path.exists)
         self.assertTrue(os.remove)
 
     @mock.patch("photoapp.models.Images.objects.get")
