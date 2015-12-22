@@ -33,7 +33,7 @@ var eventListeners = {
         });
         // Focus the image to the center of page
         $("body").on("click", ".edit", function() {
-            $('#placeholdertext').hide();
+            $("#placeholdertext").hide();
             var img_id = $(this).attr("id").split("-")[1];
             var img_src = $("#img-" + img_id).attr("src")
             $("#img").attr("src", img_src);
@@ -146,6 +146,7 @@ var mobileUploadForm = {
             // On success
             success: function(json) {
                 // Display the image in the center after upload
+                $("placeholdertext").hide();
                 $(".preloader-mobile").css("display", "none");
                 var img_src = json.newest_image_src;
                 var img_id = json.newest_image_id
