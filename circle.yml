@@ -6,13 +6,12 @@ machine:
 dependencies:
   pre:
     - pip install --upgrade pip
-    - pip install --upgrade virtualenv
     - pip install -r requirements.txt
     - pip install coveralls
     - npm install bower
 test:
   override:
-    - bower install --settings=djangophotoapp.settings.test
+    - bower install
     - python djangophotoapp/manage.py collectstatic --noinput --settings=djangophotoapp.settings.test
     - python djangophotoapp/manage.py test djangophotoapp --settings=djangophotoapp.settings.test
     - coverage run djangophotoapp/manage.py test
